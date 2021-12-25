@@ -51,13 +51,11 @@ public class MyHashSet{
         Node curr = set[index];
         if(curr==null)
             return false;
-        while(curr.getNext()!=null){
+        while(curr!=null){
             if(curr.getData().equals(data))
                 return true;
             curr = curr.getNext();
         }
-        if(curr.getData().equals(data))
-            return true;
         return false;
     }
 

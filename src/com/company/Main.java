@@ -8,26 +8,49 @@ import java.lang.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println(isomorphic("paper","title"));
-    }
+        MyHashTable ht = new MyHashTable();
+        ht.add(1,2);
+        ht.add(2,21);
+        ht.add(5,2);
+        ht.add(11,3);
+        ht.add(45,6);
+        System.out.println(ht);
+        ht.add(1,5);
+        ht.add(34,2);
+        System.out.println(ht);
+        ht.removeKey(1);
+        System.out.println(ht);
+        ht.removeValue(2);
+        System.out.println(ht);
 
-    public static boolean isomorphic(String s1 , String s2){
-        if(s1.length()!=s2.length())
-            return false;
-        HashMap<Character,Character> hm1 = new HashMap<>();
-        HashMap<Character,Character> hm2 = new HashMap<>();
+        HashSet<Integer> set1 = ht.keySet();
+        System.out.println(set1);
 
-        for(int i=0 ; i<s1.length() ; i++){
-            char c1 = s1.charAt(i);
-            char c2 = s2.charAt(i);
-            if((hm1.containsKey(c1) && hm1.get(c1)!=c2)||(hm2.containsKey(c2) && hm2.get(c2)!=c1))
-                return false;
-            hm1.put(c1,c2);
-            hm2.put(c2,c1);
+        ArrayList<Integer> arrayList = ht.values();
+        System.out.println(arrayList);
 
+        for (Integer i: ht.values()){
+            System.out.print(i +" ");
         }
-        return true;
     }
+
+//    public static boolean isomorphic(String s1 , String s2){
+//        if(s1.length()!=s2.length())
+//            return false;
+//        HashMap<Character,Character> hm1 = new HashMap<>();
+//        HashMap<Character,Character> hm2 = new HashMap<>();
+//
+//        for(int i=0 ; i<s1.length() ; i++){
+//            char c1 = s1.charAt(i);
+//            char c2 = s2.charAt(i);
+//            if((hm1.containsKey(c1) && hm1.get(c1)!=c2)||(hm2.containsKey(c2) && hm2.get(c2)!=c1))
+//                return false;
+//            hm1.put(c1,c2);
+//            hm2.put(c2,c1);
+//
+//        }
+//        return true;
+//    }
 
 //    public static boolean containsNearbyDuplicates(int[] nums, int k){
 //        HashMap<Integer,Integer> hm = new HashMap<>();
@@ -264,22 +287,25 @@ public class Main {
 //
 //    }
 //
-//    private static boolean fun(ArrayList<Integer> arr) {
-//        HashMap<Integer,Integer> hm = new HashMap<>();
-//        for(int i=0 ; i<arr.size() ; i++){
-//            hm.put(arr.get(i),hm.getOrDefault(arr.get(i),0)+1);
-//        }
-//        for(Integer i : hm.values()){
-//            if(i%2!=0)
-//                return false;
-//        }
+    private static boolean fun(ArrayList<Integer> arr) {
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        for(int i=0 ; i<arr.size() ; i++){
+            //hm.put(arr.get(i),hm.getOrDefault(arr.get(i),0)+1);
+            if(hm.get(arr.get(i))==null)
+                hm.put(arr.get(i),0);
+            hm.put(arr.get(i),hm.get(arr.get(i))+1);
+        }
+        for(Integer i : hm.values()){
+            if(i%2!=0)
+                return false;
+        }
 //        for(Map.Entry<Integer,Integer> e: hm.entrySet()){
 //            if(e.getValue()%2!=0)
 //                return false;
 //        }
-//
-//        return true;
-//    }
+
+        return true;
+    }
 //
 //    public static String convert(int n,int base){
 //        MyStack3<Integer> s = new MyStack3<>();
