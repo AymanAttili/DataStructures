@@ -30,9 +30,17 @@ public class MyQueue {
         rev();
         arr.add(0,temp);
     }
+    public boolean isEmpty(){
+        return (size==0);
+    }
 
+    public Integer peek() {
+        return arr.get(size-1);
+    }
     @Override
     public String toString() {
         return arr.toString();
     }
+
+
 }

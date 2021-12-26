@@ -6,22 +6,111 @@ import java.lang.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        ArrayList<Integer> l1 = new ArrayList<>();
+        l1.add(1);
+        l1.add(2);
+        l1.add(3);
+        l1.add(4);
+        l1.add(5);
+        l1.add(1);
+        l1.add(2);
+        l1.add(3);
+        ArrayList<Integer> l2 = new ArrayList<>();
+        l2.add(8);
+        l2.add(9);
+        l2.add(10);
+        l2.add(1);
+        l2.add(2);
+        l2.add(1);
+        System.out.println(Dup(l1,l2));
 
-        BST tree = new BST();
-        tree.add(6);
-        tree.add(2);
-        tree.add(8);
-        tree.add(0);
-        tree.add(4);
-        tree.add(7);
-        tree.add(9);
-        tree.add(3);
-        tree.add(5);
-        System.out.println(tree.numOfLeaves());
+
 
     }
 
+    public boolean hasDuplicates(int[] nums){
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            set.add(nums[i]);
+        }
+        if(set.size()!=nums.length)
+            return true;
+        else
+            return false;
+    }
 
+    public boolean hasCycle(MyLinkedList ll){
+        HashSet<Node> set = new HashSet<>();
+        Node curr = ll.getHead();
+        while(curr!=null){
+            if(set.contains(curr))
+                return true;
+            set.add(curr);
+            curr=curr.getNext();
+        }
+        return false;
+    }
+
+    public void firstUnique(String str){
+        HashMap<Character,Integer> map = new HashMap<>();
+        for (int i = 0; i < str.length(); i++) {
+            if (!map.containsKey(str.charAt(i)))
+                map.put(str.charAt(i), 1);
+            else
+                map.put(str.charAt(i),map.get(str.charAt(i))+1);
+        }
+
+        for(Map.Entry i: map.entrySet()){
+            if(i.getValue().equals(1)) {
+                System.out.println(i.getKey());
+                return;
+            }
+
+        }
+
+        System.out.println(-1);
+
+
+    }
+
+    public static ArrayList<Integer> Dup(ArrayList<Integer> l1,ArrayList<Integer> l2){
+        HashMap<Integer,Integer> m1 = new HashMap<>();
+        HashMap<Integer,Integer> m2 = new HashMap<>();
+
+        for (int i = 0; i < l1.size(); i++) {
+            m1.put(l1.get(i),m1.getOrDefault(l1.get(i),0)+1);
+        }
+        for (int i = 0; i < l2.size(); i++) {
+            m2.put(l2.get(i),m2.getOrDefault(l2.get(i),0)+1);
+        }
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for(Integer key : m1.keySet()){
+            if(m2.containsKey(key)){
+                for(int i=0 ; i< Math.min(m1.get(key),m2.get(key)) ; i++)
+                    list.add(key);
+            }
+        }
+
+        return list;
+
+
+
+    }
+
+    public static boolean twoSum(int[] arr , int target){
+        HashSet<Integer> set = new HashSet<>();
+        for (int i = 0; i < arr.length; i++) {
+            set.add(arr[i]);
+        }
+        for(Integer i : set){
+            if(set.contains(target-i) &&  (target-i)!=i)
+                return true;
+        }
+
+        return false;
+
+    }
 
 //    public static boolean uniqueOccurrences(int[] nums){
 //        HashMap<Integer,Integer> hm = new HashMap<>();

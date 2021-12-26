@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 public class MyHashTable {
     private int size = 10;
-    private HashNode<Integer,Integer>[] arr = new HashNode[size];
+    private HashNode<Integer,Integer>[]arr  = new HashNode[size];
 
     public MyHashTable() {
     }
