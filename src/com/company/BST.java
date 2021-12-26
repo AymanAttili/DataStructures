@@ -58,40 +58,40 @@ public class BST {
         }
     }
 
-    public void preTraversal(){
-        preTraversal(root);
+    public void preOrder(){
+        preOrder(root);
     }
-    public void preTraversal(TNode root){
+    public void preOrder(TNode root){
         if(root==null)
             return;
         System.out.println(root.data);
-        preTraversal(root.left);
-        preTraversal(root.right);
+        preOrder(root.left);
+        preOrder(root.right);
         return;
     }
 
-    public void inTraversal(){
-        inTraversal(root);
+    public void inOrder(){
+        inOrder(root);
     }
-    public void inTraversal(TNode root){
+    public void inOrder(TNode root){
         if(root==null)
             return;
 
-        inTraversal(root.left);
+        inOrder(root.left);
         System.out.println(root.data);
-        inTraversal(root.right);
+        inOrder(root.right);
         return;
     }
 
-    public void postTraversal(){
-        postTraversal(root);
+    public void postOrder(){
+        postOrder(root);
     }
-    public void postTraversal(TNode root){
+    public void postOrder(TNode root){
         if(root==null)
             return;
 
-        postTraversal(root.left);
-        postTraversal(root.right);
+        postOrder(root.left);
+        postOrder(root.right);
         System.out.println(root.data);
         return;
     }
