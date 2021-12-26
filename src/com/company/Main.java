@@ -8,30 +8,7 @@ import java.lang.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        MyHashTable ht = new MyHashTable();
-        ht.add(1,2);
-        ht.add(2,21);
-        ht.add(5,2);
-        ht.add(11,3);
-        ht.add(45,6);
-        System.out.println(ht);
-        ht.add(1,5);
-        ht.add(34,2);
-        System.out.println(ht);
-        ht.removeKey(1);
-        System.out.println(ht);
-        ht.removeValue(2);
-        System.out.println(ht);
 
-        HashSet<Integer> set1 = ht.keySet();
-        System.out.println(set1);
-
-        ArrayList<Integer> arrayList = ht.values();
-        System.out.println(arrayList);
-
-        for (Integer i: ht.values()){
-            System.out.print(i +" ");
-        }
     }
 
 //    public static boolean isomorphic(String s1 , String s2){

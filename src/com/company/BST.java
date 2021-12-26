@@ -58,40 +58,40 @@ public class BST {
         }
     }
 
-    public void pre(){
-        pre(root);
+    public void preTraversal(){
+        preTraversal(root);
     }
-    public void pre(TNode root){
+    public void preTraversal(TNode root){
         if(root==null)
             return;
         System.out.println(root.data);
-        pre(root.left);
-        pre(root.right);
+        preTraversal(root.left);
+        preTraversal(root.right);
         return;
     }
 
-    public void in(){
-        in(root);
+    public void inTraversal(){
+        inTraversal(root);
     }
-    public void in(TNode root){
+    public void inTraversal(TNode root){
         if(root==null)
             return;
 
-        in(root.left);
+        inTraversal(root.left);
         System.out.println(root.data);
-        in(root.right);
+        inTraversal(root.right);
         return;
     }
 
-    public void post(){
-        post(root);
+    public void postTraversal(){
+        postTraversal(root);
     }
-    public void post(TNode root){
+    public void postTraversal(TNode root){
         if(root==null)
             return;
 
-        post(root.left);
-        post(root.right);
+        postTraversal(root.left);
+        postTraversal(root.right);
         System.out.println(root.data);
         return;
     }
@@ -116,6 +116,9 @@ public class BST {
             return contains(root.left,value);
     }
 
+    public boolean isEmpty(){
+        return (root==null);
+    }
     public void remove(int x) {
     }
 }
