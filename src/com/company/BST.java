@@ -121,6 +121,47 @@ public class BST {
     }
     public void remove(int x) {
     }
+
+
+/////////////////////////دورة الداتا/////////////////
+//    public int maxDepth(){
+//        return maxDepth(root);
+//    }
+//
+//    private int maxDepth(TNode root) {
+//        if(root==null)
+//            return 0;
+//        return Math.max(maxDepth(root.left),maxDepth(root.right))+1;
+//    }
+//
+//    public String path(Integer value){
+//        return path(root,value);
+//    }
+//
+//    private String path(TNode root, Integer value) {
+//        if(!contains(value))
+//            return "Not found";
+//        if(root.data.equals(value))
+//            return ""+value;
+//        if(value>root.data)
+//            return root.data +"->"+path(root.right,value);
+//        else
+//            return root.data+"->"+path(root.left,value);
+//    }
+//
+//    public int numOfLeaves(){
+//        return numOfLeaves(root);
+//    }
+//
+//    private int numOfLeaves(TNode root) {
+//        if(root==null)
+//            return 0;
+//        if(root.left==null && root.right==null)
+//            return 1;
+//        return numOfLeaves(root.right)+numOfLeaves(root.left);
+//    }
+//////////////////
+
 }
 
 

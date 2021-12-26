@@ -1,7 +1,5 @@
 package com.company;
 
-import sun.misc.Queue;
-
 import java.util.*;
 import java.lang.*;
 
@@ -9,7 +7,81 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        BST tree = new BST();
+        tree.add(6);
+        tree.add(2);
+        tree.add(8);
+        tree.add(0);
+        tree.add(4);
+        tree.add(7);
+        tree.add(9);
+        tree.add(3);
+        tree.add(5);
+        System.out.println(tree.numOfLeaves());
+
     }
+
+
+
+//    public static boolean uniqueOccurrences(int[] nums){
+//        HashMap<Integer,Integer> hm = new HashMap<>();
+//        for (int i = 0; i < nums.length; i++) {
+//            if(!hm.containsKey(nums[i]))
+//                hm.put(nums[i],0);
+//            hm.put(nums[i],hm.get(nums[i])+1);
+//        }
+//        HashSet<Integer> set = new HashSet<>();
+//        for(Integer v : hm.values())
+//            set.add(v);
+//        return (set.size()==hm.size());
+//    }
+
+//    public static int numOfUnique(int[] nums){
+//        HashMap<Integer,Integer> hm = new HashMap<>();
+//        for(int i=0 ; i<nums.length ; i++){
+//            hm.put(nums[i],hm.getOrDefault(nums[i],0)+1);
+//        }
+//        int count = 0;
+//        for(Map.Entry<Integer,Integer> ent: hm.entrySet()){
+//            if(ent.getValue()==1)
+//                count+=ent.getKey();
+//        }
+//        return count;
+//    }
+
+//    private static int numOfJewels(String[] stones, String[] jewels) {
+//        HashSet<String> set = new HashSet<>();
+//        int count = 0;
+//        for(int i=0 ; i<jewels.length ; i++){
+//            set.add(jewels[i]);
+//        }
+//        for (int i = 0; i < stones.length; i++) {
+//            if(set.contains(stones[i]))
+//                count++;
+//        }
+//        return count;
+//    }
+
+//    public static boolean pangram(String str){
+//        HashSet<Character> set = new HashSet<>();
+//        for(int i=0 ; i<str.length() ; i++){
+//            set.add(str.charAt(i));
+//        }
+//        return (set.size()==26);
+//    }
+
+//    public static int missingNumber(int[] nums){
+//        HashSet<Integer> set = new HashSet<>();
+//        for (int i = 0; i < nums.length ; i++) {
+//            set.add(nums[i]);
+//        }
+//        int c=-1;
+//        for(int i=0 ; i<=nums.length ; i++){
+//            if(!set.contains(i))
+//                c=i;
+//        }
+//        return c;
+//    }
 
 //    public static boolean isomorphic(String s1 , String s2){
 //        if(s1.length()!=s2.length())
@@ -264,25 +336,25 @@ public class Main {
 //
 //    }
 //
-    private static boolean fun(ArrayList<Integer> arr) {
-        HashMap<Integer,Integer> hm = new HashMap<>();
-        for(int i=0 ; i<arr.size() ; i++){
-            //hm.put(arr.get(i),hm.getOrDefault(arr.get(i),0)+1);
-            if(hm.get(arr.get(i))==null)
-                hm.put(arr.get(i),0);
-            hm.put(arr.get(i),hm.get(arr.get(i))+1);
-        }
-        for(Integer i : hm.values()){
-            if(i%2!=0)
-                return false;
-        }
+//    private static boolean fun(ArrayList<Integer> arr) {
+//        HashMap<Integer,Integer> hm = new HashMap<>();
+//        for(int i=0 ; i<arr.size() ; i++){
+//            //hm.put(arr.get(i),hm.getOrDefault(arr.get(i),0)+1);
+//            if(hm.get(arr.get(i))==null)
+//                hm.put(arr.get(i),0);
+//            hm.put(arr.get(i),hm.get(arr.get(i))+1);
+//        }
+//        for(Integer i : hm.values()){
+//            if(i%2!=0)
+//                return false;
+//        }
 //        for(Map.Entry<Integer,Integer> e: hm.entrySet()){
 //            if(e.getValue()%2!=0)
 //                return false;
 //        }
-
-        return true;
-    }
+//
+//        return true;
+//    }
 //
 //    public static String convert(int n,int base){
 //        MyStack3<Integer> s = new MyStack3<>();
