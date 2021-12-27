@@ -6,23 +6,10 @@ import java.lang.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArrayList<Integer> l1 = new ArrayList<>();
-        l1.add(1);
-        l1.add(2);
-        l1.add(3);
-        l1.add(4);
-        l1.add(5);
-        l1.add(1);
-        l1.add(2);
-        l1.add(3);
-        ArrayList<Integer> l2 = new ArrayList<>();
-        l2.add(8);
-        l2.add(9);
-        l2.add(10);
-        l2.add(1);
-        l2.add(2);
-        l2.add(1);
-        System.out.println(Dup(l1,l2));
+        BST tree = new BST();
+        tree.add(1);
+
+        tree.inOrder();
 
 
 

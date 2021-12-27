@@ -1,11 +1,11 @@
-import com.company.MyQueue;
+package com.company;
 
-public class Stack11 {
+public class StackBy2Queues {
     MyQueue q1 = new MyQueue();
     MyQueue q2 = new MyQueue();
 
 
-    public Stack11() {
+    public StackBy2Queues() {
     }
 
     public void push(Integer value){
