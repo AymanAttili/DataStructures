@@ -1,18 +1,66 @@
 package com.company;
 
+import sun.misc.GC;
+
 import java.util.*;
 import java.lang.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+
         BST tree = new BST();
+        tree.add(2);
+        tree.add(3);
         tree.add(1);
+        tree.add(5);
+        tree.add(7);
+        tree.add(8);
+        tree.add(4);
+        tree.add(9);
+        tree.BFS();
+    }
+    public static boolean binarySearch(int[] arr,int target){
+        return binarySearch(arr,target,0,arr[arr.length-1]);
+    }
 
-        tree.inOrder();
+    private static boolean binarySearch(int[] arr,int target , int l, int r) {
+        if(l>r)
+            return false;
+        int mid = (r-l)/2;
+        if(arr[mid]>target)
+            return binarySearch(arr,target,l,mid-1);
+        if(arr[mid]<target)
+            return binarySearch(arr,target,mid+1,r);
+        return true;
+    }
 
+    public static int power(int x , int n){
+        if(n==0)
+            return 1;
+        return x*power(x,n-1);
+    }
 
+    public static String revString(String str){
+        if(str.length()<=1)
+            return str;
+        return revString(str.substring(1))+str.charAt(0);
+    }
 
+    public static int GCD(int x , int y){
+        if(y==0)
+            return x;
+        return GCD(y,x%y);
+    }
+
+    public static boolean isPalindrome(String str){
+        if(str.length()<=1){
+            return true;
+        }
+        if(str.charAt(0)==str.charAt(str.length()-1))
+            return isPalindrome(str.substring(1,str.length()-1));
+        return false;
     }
 
     public boolean hasDuplicates(int[] nums){
