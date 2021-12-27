@@ -1,6 +1,7 @@
 package com.company;
 
 import java.rmi.AccessException;
+import java.util.NoSuchElementException;
 
 public class CircularQueue<E> {
     private int size;
@@ -12,10 +13,16 @@ public class CircularQueue<E> {
         f=-1;
         r=-1;
     }
+    public CircularQueue(int length) {
+        size=0;
+        f=-1;
+        r=-1;
+        arr = (E[]) new Object[length];
+    }
 
-    public E add(E element) throws Exception {
+    public boolean add(E element){
         if(isFull())
-            throw new Exception("Full Queue");
+            return false;
         if(f==-1) {
             f++;
             r++;
@@ -24,14 +31,13 @@ public class CircularQueue<E> {
             f=(f+1)%arr.length;
         }
         arr[f]=element;
-        E added = arr[f];
         size++;
-        return added;
+        return true;
     }
 
-    public E remove() throws Exception {
+    public E remove(){
         if(f==-1)
-            throw new Exception("Empty Queue");
+            throw new NoSuchElementException();
         E removed = arr[r];
         r=(r+1)%arr.length;
         size--;
