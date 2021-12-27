@@ -98,10 +98,29 @@ public class BST {
         return;
     }
 
+    public void BFS() {
+        BFS(root);
+    }
+    public void BFS(TNode root) {
+        Queue<TNode> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            TNode f = q.poll();
+            System.out.print(f.data + " ");
+            if (f.left != null)
+                q.add(f.left);
+            if (f.right != null)
+                q.add(f.right);
+        }
+        System.out.println();
+
+    }
+    
     public void clear() {
         root=null;
     }
-
+    public void remove(int x) {
+    }
 
     public boolean contains(int value) {
         return contains(this.root,value);
@@ -121,28 +140,7 @@ public class BST {
     public boolean isEmpty(){
         return (root==null);
     }
-    public void remove(int x) {
-    }
-
-    public void BFS() {
-        BFS(root);
-    }
-    public void BFS(TNode root) {
-    Queue<TNode> q  = new LinkedList<>() ;
-    int c = 0 ;
-    q.add(root);
-    while(!q.isEmpty())
-    {
-        TNode f = q.poll() ;
-        System.out.print(f.data+" ");
-        if(f.left != null)
-            q.add(f.left) ;
-        if(f.right != null)
-            q.add(f.right) ;
-    }
-
-    }
-
+    
     public int numNRec(){
         return numNRec(root);
     }
@@ -153,6 +151,15 @@ public class BST {
         return 1+numNRec(root.left)+numNRec(root.right);
     }
 
+    public int maxSum(){
+        return maxSum(root);
+    }
+
+    private int maxSum(TNode root) {
+        if(root==null)
+            return 0;
+        return root.data+Math.max(maxSum(root.right),maxSum(root.left));
+    }
 
 /////////////////////////دورة الداتا/////////////////
 //    public int maxDepth(){

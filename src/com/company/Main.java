@@ -1,7 +1,6 @@
 package com.company;
 
 import sun.misc.GC;
-import sun.misc.Queue;
 
 import java.util.*;
 import java.lang.*;
@@ -9,8 +8,8 @@ import java.lang.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-
+        Queue<Integer> q = new LinkedList<>();
+        HashSet<Integer> set = new HashSet<>();
 
         BST tree = new BST();
         tree.add(2);
@@ -18,11 +17,43 @@ public class Main {
         tree.add(1);
         tree.add(5);
         tree.add(7);
-        tree.add(8);
+        tree.add(-2);
         tree.add(4);
-        tree.add(9);
-        tree.BFS();
+        tree.add(-7);
+
+
+
+
+
+
     }
+
+
+    /////A method to find the occurrence of a specific character in a string
+    public static int occ(String str , char c){
+        if(str.length()==0)
+            return 0;
+        if(str.charAt(0)==c)
+            return 1 + occ(str.substring(1),c);
+        return occ(str.substring(1),c);
+    }
+
+
+/////
+    public static void revArray(int[] arr){
+        revArray(arr,0);
+    }
+    public static void revArray(int[] arr,int i){
+        if(i>=arr.length-1-i)
+            return;
+        int temp = arr[i];
+        arr[i]=arr[arr.length-1-i];
+        arr[arr.length-1-i] = temp;
+        revArray(arr,i+1);
+    }
+
+
+    ///////A recursive binary search method.
     public static boolean binarySearch(int[] arr,int target){
         return binarySearch(arr,target,0,arr[arr.length-1]);
     }
@@ -38,24 +69,28 @@ public class Main {
         return true;
     }
 
+    ////A method to compute xn for a positive integer n.
     public static int power(int x , int n){
         if(n==0)
             return 1;
         return x*power(x,n-1);
     }
 
+    ////A method to reverse a string.
     public static String revString(String str){
         if(str.length()<=1)
             return str;
         return revString(str.substring(1))+str.charAt(0);
     }
 
+    ////A method to compute the GCD (greatest common divisor).
     public static int GCD(int x , int y){
         if(y==0)
             return x;
         return GCD(y,x%y);
     }
 
+    ////A method checks if a string is palindrome.
     public static boolean isPalindrome(String str){
         if(str.length()<=1){
             return true;
@@ -65,6 +100,8 @@ public class Main {
         return false;
     }
 
+
+    ////A method finds if the array has duplicates.
     public boolean hasDuplicates(int[] nums){
         HashSet<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
@@ -76,6 +113,8 @@ public class Main {
             return false;
     }
 
+
+    ////A method takes a linked list and finds if it has a cycle.
     public boolean hasCycle(MyLinkedList ll){
         HashSet<Node> set = new HashSet<>();
         Node curr = ll.getHead();
@@ -88,6 +127,7 @@ public class Main {
         return false;
     }
 
+    ////A method prints the first unique number(has just one occurrence).
     public void firstUnique(String str){
         HashMap<Character,Integer> map = new HashMap<>();
         for (int i = 0; i < str.length(); i++) {
@@ -102,14 +142,11 @@ public class Main {
                 System.out.println(i.getKey());
                 return;
             }
-
         }
-
         System.out.println(-1);
-
-
     }
 
+    ////given two Array Lists, return an Array List that contains the intersection of the two lists. Note: (the intersection may contain duplicates).
     public static ArrayList<Integer> Dup(ArrayList<Integer> l1,ArrayList<Integer> l2){
         HashMap<Integer,Integer> m1 = new HashMap<>();
         HashMap<Integer,Integer> m2 = new HashMap<>();
@@ -128,13 +165,10 @@ public class Main {
                     list.add(key);
             }
         }
-
         return list;
-
-
-
     }
 
+    ////A method that
     public static boolean twoSum(int[] arr , int target){
         HashSet<Integer> set = new HashSet<>();
         for (int i = 0; i < arr.length; i++) {
@@ -227,21 +261,21 @@ public class Main {
 //        return true;
 //    }
 
-//    public static boolean containsNearbyDuplicates(int[] nums, int k){
-//        HashMap<Integer,Integer> hm = new HashMap<>();
-//        for(int i=0 ; i<nums.length ; i++){
-//            if(hm.containsKey(nums[i])){
-//                int z = hm.get(nums[i]);
-//                if(i-z<=k)
-//                    return true;
-//                else
-//                    hm.put(nums[i],i);
-//            }
-//            else
-//                hm.put(nums[i],i);
-//        }
-//        return false;
-//    }
+    public static boolean containsNearbyDuplicates(int[] nums, int k){
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        for(int i=0 ; i<nums.length ; i++){
+            if(hm.containsKey(nums[i])){
+                int z = hm.get(nums[i]);
+                if(i-z<=k)
+                    return true;
+                else
+                    hm.put(nums[i],i);
+            }
+            else
+                hm.put(nums[i],i);
+        }
+        return false;
+    }
 
 
 //    public static int allowed(String allowed, String[] words){
