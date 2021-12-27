@@ -17,7 +17,7 @@ public class CircularQueue<E> {
         if(isFull())
             throw new Exception("Full Queue");
         if(f==-1) {
-            f=(f+1)%arr.length;
+            f++;
             r++;
         }
         else {
