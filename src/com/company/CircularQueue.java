@@ -47,7 +47,7 @@ public class CircularQueue<E> {
     }
 
     private boolean isFull() {
-        if((f%arr.length==arr.length-1 && r%arr.length==0)||(f==r-1))
+        if((f==arr.length-1 && r==0)||(f==r-1))
             return true;
         return false;
     }

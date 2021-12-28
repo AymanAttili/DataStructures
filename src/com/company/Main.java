@@ -12,19 +12,37 @@ public class Main {
         HashSet<Integer> set = new HashSet<>();
 
         BST tree = new BST();
-        tree.add(2);
-        tree.add(3);
+        tree.add(10);
+        tree.add(13);
         tree.add(1);
         tree.add(5);
         tree.add(7);
-        tree.add(-2);
+        tree.add(22);
         tree.add(4);
-        tree.add(-7);
+        tree.add(6);
 
+        System.out.println(hasPathSum(tree.root,20));
 
+    }
 
+    public static boolean hasPathSum(TNode root , int target){
+        return hasPathSum(root,0,target);
+    }
 
+    private static boolean hasPathSum(TNode root, int sum, int target) {
+        if(root==null)
+            return (sum==target);
+        if(root.left==root.right && root.left==null){
+            sum+=root.data;
+            return (sum==target);
+        }
 
+        else{
+            if(sum>target)
+                return false;
+                sum+= root.data;
+            return hasPathSum(root.left,sum,target) || hasPathSum(root.right,sum,target);
+        }
 
     }
 
