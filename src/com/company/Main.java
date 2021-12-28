@@ -1,5 +1,6 @@
 package com.company;
 
+import com.sun.deploy.security.SelectableSecurityManager;
 import sun.misc.GC;
 
 import java.util.*;
@@ -12,18 +13,60 @@ public class Main {
         HashSet<Integer> set = new HashSet<>();
 
         BST tree = new BST();
-        tree.add(10);
-        tree.add(13);
         tree.add(1);
-        tree.add(5);
-        tree.add(7);
-        tree.add(22);
-        tree.add(4);
-        tree.add(6);
+        tree.add(3);
 
-        System.out.println(sumOfLeftLeaves(tree.root));
+        tree.add(2);
+
+        System.out.println(getLevelDiff(tree.root));
 
     }
+
+    public static void targetIndices(int[] nums, int target){
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i=0 ; i<nums.length ; i++)
+            map.put(nums[i],i);
+        for(Integer key: map.keySet()){
+            if(map.containsKey(target-key)){
+                System.out.println(map.get(key)+","+map.get(target-key));
+                break;
+            }
+        }
+    }
+
+    public static int getLevelDiff(TNode root){
+        ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
+        int z= maxD(root);
+        for(int i=0 ; i<z ; i++)
+            arr.add(new ArrayList<>());
+        int c=0;
+        for (int i = 0; i < z; i++) {
+            if(i%2==0)
+                for(int j=0 ; j<arr.get(i).size() ; j++)
+                    c+=arr.get(i).get(j);
+            else
+                for(int j=0 ; j<arr.get(i).size() ; j++)
+                    c-=arr.get(i).get(j);
+
+        }
+        return c;
+    }
+
+    private static int maxD(TNode root) {
+        if(root==null)
+            return 0;
+        return 1+Math.max(maxD(root.left),maxD(root.right));
+    }
+
+    private static void getLevelDiff(TNode root, int i,ArrayList<ArrayList<Integer>> arr) {
+        if(root==null)
+            return;
+        arr.get(i).add(root.data);
+        getLevelDiff(root.right,i+1,arr);
+        getLevelDiff(root.left,i+1,arr);
+
+    }
+
     public static int sumOfLeftLeaves(TNode root){
         return sumOfLeftLeaves(root,false);
     }
