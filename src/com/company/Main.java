@@ -21,9 +21,22 @@ public class Main {
         tree.add(4);
         tree.add(6);
 
-        System.out.println(hasPathSum(tree.root,20));
+        System.out.println(sumOfLeftLeaves(tree.root));
 
     }
+    public static int sumOfLeftLeaves(TNode root){
+        return sumOfLeftLeaves(root,false);
+    }
+
+    private static int sumOfLeftLeaves(TNode root, boolean left) {
+        if(root==null)
+            return 0;
+        if(root.left==root.right && root.right==null && left){
+            return root.data;
+        }
+        return sumOfLeftLeaves(root.left,true)+sumOfLeftLeaves(root.right,false);
+    }
+
 
     public static boolean hasPathSum(TNode root , int target){
         return hasPathSum(root,0,target);
