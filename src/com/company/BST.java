@@ -12,7 +12,7 @@ public class BST {
     }
 
     public TNode add(Integer value) {
-        root=add(root, value);
+        root = add(root, value);
         return root;
     }
 
@@ -60,11 +60,12 @@ public class BST {
         }
     }
 
-    public void preOrder(){
+    public void preOrder() {
         preOrder(root);
     }
-    public void preOrder(TNode root){
-        if(root==null)
+
+    public void preOrder(TNode root) {
+        if (root == null)
             return;
         System.out.println(root.data);
         preOrder(root.left);
@@ -72,11 +73,12 @@ public class BST {
         return;
     }
 
-    public void inOrder(){
+    public void inOrder() {
         inOrder(root);
     }
-    public void inOrder(TNode root){
-        if(root==null)
+
+    public void inOrder(TNode root) {
+        if (root == null)
             return;
 
         inOrder(root.left);
@@ -85,11 +87,12 @@ public class BST {
         return;
     }
 
-    public void postOrder(){
+    public void postOrder() {
         postOrder(root);
     }
-    public void postOrder(TNode root){
-        if(root==null)
+
+    public void postOrder(TNode root) {
+        if (root == null)
             return;
 
         postOrder(root.left);
@@ -101,6 +104,7 @@ public class BST {
     public void BFS() {
         BFS(root);
     }
+
     public void BFS(TNode root) {
         Queue<TNode> q = new LinkedList<>();
         q.add(root);
@@ -115,88 +119,156 @@ public class BST {
         System.out.println();
 
     }
-    
+
     public void clear() {
-        root=null;
+        root = null;
     }
-    public void remove(int x) {
+
+    public boolean remove(int x) {
+        if (!contains(x))
+            return false;
+        boolean left = true;
+        TNode pre = root;
+        TNode curr = root;
+        while (true) {
+            if (curr.data.equals(x))
+                break;
+            if (curr.data > x) {
+                pre = curr;
+                curr = curr.left;
+                left = true;
+            }
+            if (curr.data < x) {
+                pre = curr;
+                curr = curr.right;
+                left = false;
+            }
+        }
+        if (curr != pre) {
+            if (curr.right == null && left)
+                pre.left = curr.left;
+            else if (curr.left == null && left)
+                pre.left = curr.right;
+            else if (curr.right == null)
+                pre.right = curr.left;
+            else if (curr.left == null)
+                pre.right = curr.right;
+
+            else {
+                int temp = maxLeft(curr.right);
+                remove(temp);
+                curr.data = temp;
+            }
+        } else {
+            if (curr.left == curr.right && curr.left == null)
+                root = null;
+            else if (curr.left != null) {
+                int temp = maxRight(curr.left);
+                remove(temp);
+                curr.data = temp;
+            } else if (curr.right != null) {
+                int temp = maxLeft(curr.right);
+                remove(temp);
+                curr.data = temp;
+            }
+        }
+        return true;
+    }
+
+    private int maxRight(TNode root) {
+        while (true) {
+            if (root.right == null)
+                break;
+            root = root.right;
+        }
+        return root.data;
+    }
+
+    private int maxLeft(TNode root) {
+        while (true) {
+            if (root.left == null)
+                break;
+            root = root.left;
+        }
+        return root.data;
     }
 
     public boolean contains(int value) {
-        return contains(this.root,value);
+        return contains(this.root, value);
     }
 
     private boolean contains(TNode root, int value) {
-        if(root==null)
+        if (root == null)
             return false;
-        if(root.data==value)
+        if (root.data == value)
             return true;
-        else if(value>root.data)
-            return contains(root.right,value);
+        else if (value > root.data)
+            return contains(root.right, value);
         else
-            return contains(root.left,value);
+            return contains(root.left, value);
     }
 
-    public boolean isEmpty(){
-        return (root==null);
+    public boolean isEmpty() {
+        return (root == null);
     }
-    
-    public int numNRec(){
+
+    public int numNRec() {
         return numNRec(root);
     }
 
     private int numNRec(TNode root) {
-        if(root==null)
+        if (root == null)
             return 0;
-        return 1+numNRec(root.left)+numNRec(root.right);
+        return 1 + numNRec(root.left) + numNRec(root.right);
     }
 
-    public int maxSum(){
+    public int maxSum() {
         return maxSum(root);
     }
 
     private int maxSum(TNode root) {
-        if(root==null)
+        if (root == null)
             return 0;
-        return root.data+Math.max(maxSum(root.right),maxSum(root.left));
+        return root.data + Math.max(maxSum(root.right), maxSum(root.left));
     }
 
-/////////////////////////دورة الداتا/////////////////
-    public int maxDepth(){
+    /////////////////////////دورة الداتا/////////////////
+    ////////////////////////////////////////////////
+    public int maxDepth() {
         return maxDepth(root);
     }
 
     private int maxDepth(TNode root) {
-        if(root==null)
+        if (root == null)
             return 0;
-        return Math.max(maxDepth(root.left),maxDepth(root.right))+1;
+        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 
-    public String path(Integer value){
-        return path(root,value);
+    public String path(Integer value) {
+        return path(root, value);
     }
 
     private String path(TNode root, Integer value) {
-        if(!contains(value))
+        if (!contains(value))
             return "Not found";
-        if(root.data.equals(value))
-            return ""+value;
-        if(value>root.data)
-            return root.data +"->"+path(root.right,value);
+        if (root.data.equals(value))
+            return "" + value;
+        if (value > root.data)
+            return root.data + "->" + path(root.right, value);
         else
-            return root.data+"->"+path(root.left,value);
+            return root.data + "->" + path(root.left, value);
     }
 
-    public int numOfLeaves(){
+    public int numOfLeaves() {
         return numOfLeaves(root);
     }
 
     private int numOfLeaves(TNode root) {
-        if(root==null)
+        if (root == null)
             return 0;
-        if(root.left==null && root.right==null)
+        if (root.left == null && root.right == null)
             return 1;
-        return numOfLeaves(root.right)+numOfLeaves(root.left);
+        return numOfLeaves(root.right) + numOfLeaves(root.left);
     }
 //////////////////
 

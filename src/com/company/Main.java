@@ -9,16 +9,6 @@ import java.lang.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Queue<Integer> q = new LinkedList<>();
-        HashSet<Integer> set = new HashSet<>();
-
-        BST tree = new BST();
-        tree.add(1);
-        tree.add(3);
-
-        tree.add(2);
-
-        System.out.println(getLevelDiff(tree.root));
 
     }
 
@@ -242,7 +232,6 @@ public class Main {
         return list;
     }
 
-    ////A method that
     public static boolean twoSum(int[] arr , int target){
         HashSet<Integer> set = new HashSet<>();
         for (int i = 0; i < arr.length; i++) {
@@ -330,7 +319,6 @@ public class Main {
                 return false;
             hm1.put(c1,c2);
             hm2.put(c2,c1);
-
         }
         return true;
     }
