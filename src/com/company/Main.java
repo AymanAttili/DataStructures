@@ -7,6 +7,23 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        MyLinkedList<Integer> arr = new MyLinkedList<>();
+        arr.addRec(12);
+        arr.addRec(13);
+        arr.addRec(14);
+        arr.addRec(16);
+        arr.addRec(17);
+        System.out.println(arr);
+
+    }
+
+
+    public static void revLL(LinkedList<Integer> l){
+        if(l.isEmpty())
+            return ;
+        int temp = l.remove(0);
+        revLL(l);
+        l.add(temp);
     }
 
     public static void targetIndices(int[] nums, int target){

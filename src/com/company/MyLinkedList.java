@@ -81,6 +81,22 @@ public class MyLinkedList<T> {
         }
     }
 
+    public void addRec(T data){
+        if(head==null){
+            head=tail=new Node<T>(data);
+        }
+        else addRec(head,data);
+    }
+
+    private void addRec(Node<T> curr, T data) {
+        if(curr.getNext()==null) {
+            curr.setNext(new Node<T>(data));
+            tail = curr.getNext();
+            return;
+        }
+        addRec(curr.getNext(),data);
+    }
+
     public void addLast(T data){
         Node temp = new Node(data);
         if(head==null)
