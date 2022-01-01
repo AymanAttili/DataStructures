@@ -1,24 +1,23 @@
 package com.company;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class BST {
-    TNode root;
+    TreeNode root;
 
     public BST() {
         root = null;
     }
 
-    public TNode add(Integer value) {
+    public TreeNode add(Integer value) {
         root = add(root, value);
         return root;
     }
 
-    private TNode add(TNode root, Integer value) {
+    private TreeNode add(TreeNode root, Integer value) {
         if (root == null) {
-            root = new TNode(value);
+            root = new TreeNode(value);
             return root;
         }
         if (value > root.data)
@@ -35,23 +34,23 @@ public class BST {
         add2(root, value);
     }
 
-    private void add2(TNode root, Integer value) {
+    private void add2(TreeNode root, Integer value) {
         if (root == null) {
-            this.root = new TNode(value);
+            this.root = new TreeNode(value);
             return;
         }
 
-        TNode curr = root;
+        TreeNode curr = root;
         while (true) {
             if (value > curr.data) {
                 if (curr.right == null) {
-                    curr.right = new TNode(value);
+                    curr.right = new TreeNode(value);
                     break;
                 }
                 curr = curr.right;
             } else {
                 if (curr.left == null) {
-                    curr.left = new TNode(value);
+                    curr.left = new TreeNode(value);
                     break;
                 }
                 curr = curr.left;
@@ -64,7 +63,7 @@ public class BST {
         preOrder(root);
     }
 
-    public void preOrder(TNode root) {
+    public void preOrder(TreeNode root) {
         if (root == null)
             return;
         System.out.println(root.data);
@@ -77,7 +76,7 @@ public class BST {
         inOrder(root);
     }
 
-    public void inOrder(TNode root) {
+    public void inOrder(TreeNode root) {
         if (root == null)
             return;
 
@@ -91,7 +90,7 @@ public class BST {
         postOrder(root);
     }
 
-    public void postOrder(TNode root) {
+    public void postOrder(TreeNode root) {
         if (root == null)
             return;
 
@@ -105,11 +104,11 @@ public class BST {
         BFS(root);
     }
 
-    public void BFS(TNode root) {
-        Queue<TNode> q = new LinkedList<>();
+    public void BFS(TreeNode root) {
+        Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         while (!q.isEmpty()) {
-            TNode f = q.poll();
+            TreeNode f = q.poll();
             System.out.print(f.data + " ");
             if (f.left != null)
                 q.add(f.left);
@@ -128,8 +127,8 @@ public class BST {
         if (!contains(x))
             return false;
         boolean left = true;
-        TNode pre = root;
-        TNode curr = root;
+        TreeNode pre = root;
+        TreeNode curr = root;
         while (true) {
             if (curr.data.equals(x))
                 break;
@@ -175,7 +174,7 @@ public class BST {
         return true;
     }
 
-    private int maxRight(TNode root) {
+    private int maxRight(TreeNode root) {
         while (true) {
             if (root.right == null)
                 break;
@@ -184,7 +183,7 @@ public class BST {
         return root.data;
     }
 
-    private int maxLeft(TNode root) {
+    private int maxLeft(TreeNode root) {
         while (true) {
             if (root.left == null)
                 break;
@@ -197,7 +196,7 @@ public class BST {
         return contains(this.root, value);
     }
 
-    private boolean contains(TNode root, int value) {
+    private boolean contains(TreeNode root, int value) {
         if (root == null)
             return false;
         if (root.data == value)
@@ -216,7 +215,7 @@ public class BST {
         return numNRec(root);
     }
 
-    private int numNRec(TNode root) {
+    private int numNRec(TreeNode root) {
         if (root == null)
             return 0;
         return 1 + numNRec(root.left) + numNRec(root.right);
@@ -226,7 +225,7 @@ public class BST {
         return maxSum(root);
     }
 
-    private int maxSum(TNode root) {
+    private int maxSum(TreeNode root) {
         if (root == null)
             return 0;
         return root.data + Math.max(maxSum(root.right), maxSum(root.left));
@@ -238,7 +237,7 @@ public class BST {
         return maxDepth(root);
     }
 
-    private int maxDepth(TNode root) {
+    private int maxDepth(TreeNode root) {
         if (root == null)
             return 0;
         return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
@@ -248,7 +247,7 @@ public class BST {
         return path(root, value);
     }
 
-    private String path(TNode root, Integer value) {
+    private String path(TreeNode root, Integer value) {
         if (!contains(value))
             return "Not found";
         if (root.data.equals(value))
@@ -263,7 +262,7 @@ public class BST {
         return numOfLeaves(root);
     }
 
-    private int numOfLeaves(TNode root) {
+    private int numOfLeaves(TreeNode root) {
         if (root == null)
             return 0;
         if (root.left == null && root.right == null)

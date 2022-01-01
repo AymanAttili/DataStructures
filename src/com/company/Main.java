@@ -1,8 +1,5 @@
 package com.company;
 
-import com.sun.deploy.security.SelectableSecurityManager;
-import sun.misc.GC;
-
 import java.util.*;
 import java.lang.*;
 
@@ -24,7 +21,7 @@ public class Main {
         }
     }
 
-    public static int getLevelDiff(TNode root){
+    public static int getLevelDiff(TreeNode root){
         ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
         int z= maxD(root);
         for(int i=0 ; i<z ; i++)
@@ -42,13 +39,13 @@ public class Main {
         return c;
     }
 
-    private static int maxD(TNode root) {
+    private static int maxD(TreeNode root) {
         if(root==null)
             return 0;
         return 1+Math.max(maxD(root.left),maxD(root.right));
     }
 
-    private static void getLevelDiff(TNode root, int i,ArrayList<ArrayList<Integer>> arr) {
+    private static void getLevelDiff(TreeNode root, int i, ArrayList<ArrayList<Integer>> arr) {
         if(root==null)
             return;
         arr.get(i).add(root.data);
@@ -57,11 +54,11 @@ public class Main {
 
     }
 
-    public static int sumOfLeftLeaves(TNode root){
+    public static int sumOfLeftLeaves(TreeNode root){
         return sumOfLeftLeaves(root,false);
     }
 
-    private static int sumOfLeftLeaves(TNode root, boolean left) {
+    private static int sumOfLeftLeaves(TreeNode root, boolean left) {
         if(root==null)
             return 0;
         if(root.left==root.right && root.right==null && left){
@@ -71,11 +68,11 @@ public class Main {
     }
 
 
-    public static boolean hasPathSum(TNode root , int target){
+    public static boolean hasPathSum(TreeNode root , int target){
         return hasPathSum(root,0,target);
     }
 
-    private static boolean hasPathSum(TNode root, int sum, int target) {
+    private static boolean hasPathSum(TreeNode root, int sum, int target) {
         if(root==null)
             return (sum==target);
         if(root.left==root.right && root.left==null){
