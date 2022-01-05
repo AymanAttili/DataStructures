@@ -1,5 +1,7 @@
 package com.company;
 
+import sun.swing.MenuItemLayoutHelper;
+
 import java.util.*;
 import java.lang.*;
 
@@ -7,14 +9,39 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        MyLinkedList<Integer> arr = new MyLinkedList<>();
-        arr.addRec(12);
-        arr.addRec(13);
-        arr.addRec(14);
-        arr.addRec(16);
-        arr.addRec(17);
-        System.out.println(arr);
+    }
 
+
+    public static boolean isBalanced(TreeNode root){
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()) {
+            TreeNode temp = q.poll();
+            if (Math.abs(maxD(temp.left) - maxD(temp.right)) > 1)
+                return false;
+            if(temp.left!=null)
+                q.add(temp.left);
+            if(temp.right!=null)
+                q.add(temp.right);
+        }
+        return true;
+    }
+
+
+    public static void removeMidOfStack(Stack<Integer> s){
+        removeMidOfStack(s,s.size());
+    }
+
+    private static void removeMidOfStack(Stack<Integer> s, int size) {
+        if(size%2!=0)
+            size++;
+        if(s.size()==size/2) {
+            s.pop();
+            return;
+        }
+        int temp = s.pop();
+        removeMidOfStack(s,size);
+        s.push(temp);
     }
 
 
