@@ -36,9 +36,9 @@ public class AVLTree {
         BalanceTree(root.left);
         BalanceTree(root.right);
         مش عارف أكمله:)
-        }
-
     }
+
+
 
     private void lRotation(TreeNode curr){
 
