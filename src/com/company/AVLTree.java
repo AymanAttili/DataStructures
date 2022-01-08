@@ -12,7 +12,7 @@ public class AVLTree {
 
     public TreeNode add(Integer value) {
         root = add(root, value);
-        BalanceTree(root);
+        //BalanceTree(root);
         return root;
     }
 
@@ -30,13 +30,13 @@ public class AVLTree {
         return root;
     }
 
-    private void BalanceTree(TreeNode root) {
-        if (root == null)
-            return;
-        BalanceTree(root.left);
-        BalanceTree(root.right);
-        مش عارف أكمله:)/////////////////////////////////////////////////////////////////////////
-    }
+//    private void BalanceTree(TreeNode root) {
+//        if (root == null)
+//            return;
+//        BalanceTree(root.left);
+//        BalanceTree(root.right);
+//        مش عارف أكمله:)/////////////////////////////////////////////////////////////////////////
+//    }
 
 
 
