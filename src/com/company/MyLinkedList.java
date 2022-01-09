@@ -134,7 +134,7 @@ public class MyLinkedList<T> {
     public void addAll2(int ind , T[] elements){
         if(ind<1 || ind>size()+1)
             throw new RuntimeException("Out of list bounds");
-        MmyLinkedList<T> ml2= new MmyLinkedList<T>();
+        MyLinkedList<T> ml2= new MyLinkedList<T>();
         for(int i=0 ; i<elements.length ; i++)
             ml2.addLast(elements[i]);
         if(ind==1) {
@@ -425,15 +425,17 @@ public class MyLinkedList<T> {
         return arr;
     }
 
-    public void printRev(){
+
+    public void printRevRecursion(){
         if(head==null)
             return ;
         T temp  = removeFirst();
-        printRev();
+        printRevRecursion();
         System.out.print(temp+ " ");
         addFirst(temp);
         return;
     }
+
 
     public void revRecursion(){
         if(head==null)
@@ -443,7 +445,14 @@ public class MyLinkedList<T> {
         addLast(temp);
         return;
     }
-
+    public void revRecursion1(){
+        if(head==null)
+            return ;
+        T temp  = removeFirst();
+        revRecursion1();
+        addLast(temp);
+        return;
+    }
 
     public void revRecursion2() {
         if(head==tail) {
@@ -457,38 +466,6 @@ public class MyLinkedList<T> {
         tail.setNext(null);
         return;
     }
-    @Override
-    public boolean equals(Object obj) {
-        MyLinkedList ml2 = (MyLinkedList) obj;
-        if(this.size()!=ml2.size())
-            return false;
-        Node curr1 = this.getHead();
-        Node curr2 = ml2.getHead();
-        while(curr1!=null){
-            if(!(curr1.getData()==curr2.getData()))
-                return false;
-            curr1 = curr1.getNext();
-            curr2 = curr2.getNext();
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        String s = "[ ";
-        Node curr = head;
-        while(curr!=null){
-            if(curr==tail)
-                s+=curr.getData();
-            else
-                s+=curr.getData()+", ";
-            curr = curr.getNext();
-        }
-        return s + " ]";
-    }
-
-
-
 
     public void swap(int index1,int index2){
         if(index1<1||index1<1||index2>size()||index1>size())
@@ -523,6 +500,38 @@ public class MyLinkedList<T> {
         curr1.setNext(curr2.getNext());
         curr2.setNext(temp);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        MyLinkedList ml2 = (MyLinkedList) obj;
+        if(this.size()!=ml2.size())
+            return false;
+        Node curr1 = this.getHead();
+        Node curr2 = ml2.getHead();
+        while(curr1!=null){
+            if(!(curr1.getData()==curr2.getData()))
+                return false;
+            curr1 = curr1.getNext();
+            curr2 = curr2.getNext();
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        String s = "[ ";
+        Node curr = head;
+        while(curr!=null){
+            if(curr==tail)
+                s+=curr.getData();
+            else
+                s+=curr.getData()+", ";
+            curr = curr.getNext();
+        }
+        return s + " ]";
+    }
+
+
 }
 
 

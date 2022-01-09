@@ -556,7 +556,7 @@ public class Methods {
         return true;
     }
 
-    public static void swapDuplicate(MmyLinkedList m2){
+    public static void swapDuplicate(MyLinkedList m2){
         HashMap<Integer,Integer> hm = new HashMap<>();
         Node curr = m2.getHead();
         Integer rep = null ;
