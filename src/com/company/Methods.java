@@ -617,7 +617,7 @@ public class Methods {
     }
 
     public static String convert(int n,int base){
-        MyStack3<Integer> s = new MyStack3<>();
+        MyArrayListStack<Integer> s = new MyArrayListStack<>();
         while(n>0){
             s.push(n%base);
             n/=base;
@@ -631,7 +631,7 @@ public class Methods {
 
     public static String rev(String str){
         String str2 = "";
-        MyStack3<Character> s = new MyStack3<>();
+        MyArrayListStack<Character> s = new MyArrayListStack<>();
         for(int i=0 ; i<str.length() ; i++)
             s.push(str.charAt(i));
         for(int i=0 ; i<str.length() ; i++)

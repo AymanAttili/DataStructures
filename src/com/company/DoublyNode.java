@@ -1,11 +1,11 @@
 package com.company;
 
-public class Node2<E> {
+public class DoublyNode<E> {
     private E data;
-    private Node2<E> previous;
-    private Node2<E> next;
+    private DoublyNode<E> previous;
+    private DoublyNode<E> next;
 
-    public Node2(E data) {
+    public DoublyNode(E data) {
         this.data = data;
     }
 
@@ -17,19 +17,19 @@ public class Node2<E> {
         this.data = data;
     }
 
-    public Node2<E> getPrevious() {
+    public DoublyNode<E> getPrevious() {
         return previous;
     }
 
-    public void setPrevious(Node2<E> previous) {
+    public void setPrevious(DoublyNode<E> previous) {
         this.previous = previous;
     }
 
-    public Node2<E> getNext() {
+    public DoublyNode<E> getNext() {
         return next;
     }
 
-    public void setNext(Node2<E> next) {
+    public void setNext(DoublyNode<E> next) {
         this.next = next;
     }
 }

@@ -3,11 +3,11 @@ package com.company;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 
-public class MyStack3<E> {
+public class MyArrayListStack<E> {
     private ArrayList<E> arr = new ArrayList<>();
     private int size;
 
-    public MyStack3() {
+    public MyArrayListStack() {
     }
 
     public int getSize() {

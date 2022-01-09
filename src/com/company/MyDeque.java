@@ -4,8 +4,8 @@ import java.util.NoSuchElementException;
 
 public class MyDeque<E> {
     private int size;
-    private Node2<E> head;
-    private Node2<E> tail;
+    private DoublyNode<E> head;
+    private DoublyNode<E> tail;
 
     public MyDeque() {
         size=0;
@@ -18,7 +18,7 @@ public class MyDeque<E> {
     }
 
     public E addFirst(E data){
-        Node2<E> temp = new Node2<>(data);
+        DoublyNode<E> temp = new DoublyNode<>(data);
         if(head==null){
             head=tail=temp;
         }
@@ -34,7 +34,7 @@ public class MyDeque<E> {
 
 
     public E addLast(E data){
-        Node2<E> temp = new Node2<>(data);
+        DoublyNode<E> temp = new DoublyNode<>(data);
         if(head==null){
             head=tail=temp;
         }
@@ -131,7 +131,7 @@ public class MyDeque<E> {
     @Override
     public String toString() {
         String st = "[";
-        Node2 curr = head;
+        DoublyNode curr = head;
         while(curr!=null){
             if(curr==tail)
                 st+=curr.getData();

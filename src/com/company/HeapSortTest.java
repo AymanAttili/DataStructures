@@ -1,6 +1,6 @@
 package com.company;
 
-public class HeapTest {
+public class HeapSortTest {
 
     static int Heap_Size;
 

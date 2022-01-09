@@ -2,12 +2,12 @@ package com.company;
 
 import java.util.EmptyStackException;
 
-public class MyStack2<T> {
+public class MyLinkedListStack<T> {
     private Node<T> head;
     private Node<T> tail;
     private int size = 0;
 
-    public MyStack2(){
+    public MyLinkedListStack(){
         size=0;
         head=null;
         tail=null;
