@@ -1,4 +1,6 @@
-package com.company;
+package com.company.Sets;
+
+import com.company.Node;
 
 public class StringSet {
     private Node<String>[] arr = new Node[52];

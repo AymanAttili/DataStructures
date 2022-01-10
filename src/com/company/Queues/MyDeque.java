@@ -1,4 +1,6 @@
-package com.company;
+package com.company.Queues;
+
+import com.company.DoublyNode;
 
 import java.util.NoSuchElementException;
 

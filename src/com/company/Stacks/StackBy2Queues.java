@@ -1,4 +1,6 @@
-package com.company;
+package com.company.Stacks;
+
+import com.company.Queues.MyQueue;
 
 public class StackBy2Queues {
     MyQueue q1 = new MyQueue();

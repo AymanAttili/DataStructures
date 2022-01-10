@@ -1,4 +1,6 @@
-package com.company;
+package com.company.Stacks;
+
+import com.company.Node;
 
 import java.util.EmptyStackException;
 

@@ -1,4 +1,7 @@
 package com.company;
+import com.company.Stacks.MyArrayListStack;
+import com.company.Stacks.MyStack;
+
 import java.util.*;
 import java.lang.*;
 
@@ -9,11 +12,11 @@ public class Methods {
     }
 
 
-    public static boolean isBalanced(TreeNode root){
-        Queue<TreeNode> q = new LinkedList<>();
+    public static boolean isBalanced(TNode root){
+        Queue<TNode> q = new LinkedList<>();
         q.add(root);
         while(!q.isEmpty()) {
-            TreeNode temp = q.poll();
+            TNode temp = q.poll();
             if (Math.abs(maxD(temp.left) - maxD(temp.right)) > 1)
                 return false;
             if(temp.left!=null)
@@ -62,7 +65,7 @@ public class Methods {
         }
     }
 
-    public static int getLevelDiff(TreeNode root){
+    public static int getLevelDiff(TNode root){
         ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
         int z= maxD(root);
         for(int i=0 ; i<z ; i++)
@@ -80,13 +83,13 @@ public class Methods {
         return c;
     }
 
-    private static int maxD(TreeNode root) {
+    private static int maxD(TNode root) {
         if(root==null)
             return 0;
         return 1+Math.max(maxD(root.left),maxD(root.right));
     }
 
-    private static void getLevelDiff(TreeNode root, int i, ArrayList<ArrayList<Integer>> arr) {
+    private static void getLevelDiff(TNode root, int i, ArrayList<ArrayList<Integer>> arr) {
         if(root==null)
             return;
         arr.get(i).add(root.data);
@@ -95,11 +98,11 @@ public class Methods {
 
     }
 
-    public static int sumOfLeftLeaves(TreeNode root){
+    public static int sumOfLeftLeaves(TNode root){
         return sumOfLeftLeaves(root,false);
     }
 
-    private static int sumOfLeftLeaves(TreeNode root, boolean left) {
+    private static int sumOfLeftLeaves(TNode root, boolean left) {
         if(root==null)
             return 0;
         if(root.left==root.right && root.right==null && left){
@@ -109,11 +112,11 @@ public class Methods {
     }
 
 
-    public static boolean hasPathSum(TreeNode root , int target){
+    public static boolean hasPathSum(TNode root , int target){
         return hasPathSum(root,0,target);
     }
 
-    private static boolean hasPathSum(TreeNode root, int sum, int target) {
+    private static boolean hasPathSum(TNode root, int sum, int target) {
         if(root==null)
             return (sum==target);
         if(root.left==root.right && root.left==null){
@@ -720,5 +723,14 @@ public class Methods {
             i++;
         }
         return y;
+    }
+}
+class TNode {
+    Integer data;
+    TNode left;
+    TNode right;
+
+    public TNode(Integer data) {
+        this.data = data;
     }
 }

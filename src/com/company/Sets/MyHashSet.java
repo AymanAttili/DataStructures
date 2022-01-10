@@ -1,4 +1,6 @@
-package com.company;
+package com.company.Sets;
+
+import com.company.Node;
 
 public class MyHashSet{
     private int size = 10;

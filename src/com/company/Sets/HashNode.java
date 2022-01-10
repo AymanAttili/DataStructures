@@ -1,7 +1,7 @@
-package com.company;
+package com.company.Sets;
 
 public class HashNode<K,V> {
-    K key;
+     K key;
     V value;
     HashNode next;
 
@@ -9,6 +9,7 @@ public class HashNode<K,V> {
         this.key = key;
         this.value = value;
     }
+
 
     @Override
     public String toString() {

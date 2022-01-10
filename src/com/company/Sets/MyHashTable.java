@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Sets;
 
 import java.util.ArrayList;
 import java.util.HashSet;

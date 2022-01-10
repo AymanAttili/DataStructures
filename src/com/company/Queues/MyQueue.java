@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Queues;
 
 import java.rmi.AccessException;
 import java.util.ArrayList;
