@@ -11,6 +11,26 @@ public class Methods {
 
     }
 
+    public TNode pruneTree(TNode root) {
+        if(root==null)
+            return null;
+        if(root.left==root.right && root.left==null) {
+            if (root.data == 0)
+                return null;
+            return root;
+        }
+
+        root.left=pruneTree(root.left);
+        root.right = pruneTree(root.right);
+
+        if(root.left==root.right && root.left==null) {
+            if (root.data == 0)
+                return null;
+            return root;
+        }
+        return root;
+
+    }
 
     public static boolean isBalanced(TNode root){
         Queue<TNode> q = new LinkedList<>();
