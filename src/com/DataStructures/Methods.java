@@ -2,6 +2,7 @@ package com.DataStructures;
 import com.DataStructures.Stacks.MyArrayListStack;
 import com.DataStructures.Stacks.MyStack;
 
+
 import java.util.*;
 import java.lang.*;
 
@@ -11,22 +12,63 @@ public class Methods {
 
     }
 
-    public TNode pruneTree(TNode root) {
+//    public static TNode increasingBST(TNode root) {
+//        if(root==null)
+//            return null;
+//        TNode temp;
+//        if(root.left!=null) {
+//            temp = increasingBST(root.left);
+//            temp.right = increasingBST(temp.right);
+//            topRight(temp,root);
+//            root=temp;
+//        }
+//        root.right = increasingBST(root.right);
+//        return root;
+//    }
+//
+//    private static void topRight(TNode temp, TNode right) {
+//        while(temp.right!=null)
+//            temp = temp.right;
+//        temp.right=right;
+//    }
+
+
+    ////https://leetcode.com/problems/increasing-order-search-tree/
+    static ArrayList<TNode> arr = new ArrayList<>();
+    public static TNode increasingBST(TNode root) {
+        arr.clear();
+        inOrder(root);
+        for (int i = 0; i < arr.size(); i++) {
+            if (i == arr.size() - 1) {
+                arr.get(i).right = null;
+                arr.get(i).left = null;
+            } else {
+                arr.get(i).right = arr.get(i + 1);
+                arr.get(i).left = null;
+            }
+        }
+        return arr.get(0);
+    }
+    private static void inOrder(TNode root) {
+        if(root==null)
+            return ;
+        inOrder(root.left);
+        arr.add(root);
+        inOrder(root.right);
+    }
+
+
+    ////https://leetcode.com/problems/binary-tree-pruning/
+    public static TNode pruneTree(TNode root) {
         if(root==null)
             return null;
-        if(root.left==root.right && root.left==null) {
-            if (root.data == 0)
-                return null;
-            return root;
-        }
 
         root.left=pruneTree(root.left);
         root.right = pruneTree(root.right);
 
-        if(root.left==root.right && root.left==null) {
-            if (root.data == 0)
-                return null;
-            return root;
+        if(root.data==0 && root.left==root.right && root.left==null) {
+
+            return null;
         }
         return root;
 

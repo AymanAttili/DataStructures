@@ -10,6 +10,10 @@ public class BST {
         root = null;
     }
 
+    public TreeNode getRoot() {
+        return root;
+    }
+
     public TreeNode add(Integer value) {
         root = add(root, value);
         return root;
