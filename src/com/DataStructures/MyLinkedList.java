@@ -6,12 +6,12 @@ public class MyLinkedList<T> {
 
     public MyLinkedList() {
     }
-
     public MyLinkedList(T[] elements) {
         for(int i=0 ; i<elements.length ; i++){
             addLast(elements[i]);
         }
     }
+
     public Node getHead() {
         return head;
     }
@@ -28,7 +28,7 @@ public class MyLinkedList<T> {
         this.tail = tail;
     }
 
-
+    ///Basic Methods/////////////////////
     public int size(){
         int count = 0;
         Node curr = head;
@@ -77,22 +77,6 @@ public class MyLinkedList<T> {
         }
     }
 
-    public void addRec(T data){
-        if(head==null){
-            head=tail=new Node<T>(data);
-        }
-        else addRec(head,data);
-    }
-
-    private void addRec(Node<T> curr, T data) {
-        if(curr.getNext()==null) {
-            curr.setNext(new Node<T>(data));
-            tail = curr.getNext();
-            return;
-        }
-        addRec(curr.getNext(),data);
-    }
-
     public void addLast(T data){
         Node temp = new Node(data);
         if(head==null)
@@ -105,6 +89,98 @@ public class MyLinkedList<T> {
             curr.setNext(new Node<T>(data));
             tail = curr.getNext();
         }
+    }
+
+    public T removeFirst() {
+        if (head == null)
+            throw new RuntimeException("There is no data!!!");
+        T data = (T)head.getData();
+        if (head == tail) {
+            head = tail = null;
+        }
+        else {
+            head = head.getNext();
+        }
+        return data;
+    }
+
+    public T removeLast() {
+        if (head == null)
+            throw new RuntimeException("There is no data!!!");
+        T data = (T)tail.getData();
+        if (head == tail) {
+            head = tail = null;
+        } else {
+            Node curr = head;
+            while(curr.getNext()!=tail){
+                curr=curr.getNext();
+            }
+            curr.setNext(null);
+            tail=curr;
+        }
+        return data;
+    }
+
+    public boolean contains(T data){
+        if(head == null)
+            throw new RuntimeException("No data found!!!");
+        Node curr = head;
+        while(curr!=null){
+            if(curr.getData()==data)
+                return true;
+            curr = curr.getNext();
+        }
+        return false;
+    }
+
+    public void clear(){
+        head=tail=null;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        MyLinkedList ml2 = (MyLinkedList) obj;
+        if(this.size()!=ml2.size())
+            return false;
+        Node curr1 = this.getHead();
+        Node curr2 = ml2.getHead();
+        while(curr1!=null){
+            if(!(curr1.getData()==curr2.getData()))
+                return false;
+            curr1 = curr1.getNext();
+            curr2 = curr2.getNext();
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        String s = "[ ";
+        Node curr = head;
+        while(curr!=null){
+            if(curr==tail)
+                s+=curr.getData();
+            else
+                s+=curr.getData()+", ";
+            curr = curr.getNext();
+        }
+        return s + " ]";
+    }
+
+    //Extra Methods/////////////
+    public void addRec(T data){
+        if(head==null){
+            head=tail=new Node<T>(data);
+        }
+        else addRec(head,data);
+    }
+    private void addRec(Node<T> curr, T data) {
+        if(curr.getNext()==null) {
+            curr.setNext(new Node<T>(data));
+            tail = curr.getNext();
+            return;
+        }
+        addRec(curr.getNext(),data);
     }
 
     public void addByIndex(int ind,T data){
@@ -154,37 +230,6 @@ public class MyLinkedList<T> {
             ml2.getTail().setNext(curr.getNext());
             curr.setNext(ml2.getHead());
         }
-    }
-
-
-    public T removeFirst() {
-        if (head == null)
-            throw new RuntimeException("There is no data!!!");
-        T data = (T)head.getData();
-        if (head == tail) {
-            head = tail = null;
-        }
-        else {
-            head = head.getNext();
-        }
-        return data;
-    }
-
-    public T removeLast() {
-        if (head == null)
-            throw new RuntimeException("There is no data!!!");
-        T data = (T)tail.getData();
-        if (head == tail) {
-            head = tail = null;
-        } else {
-            Node curr = head;
-            while(curr.getNext()!=tail){
-                curr=curr.getNext();
-            }
-            curr.setNext(null);
-            tail=curr;
-        }
-        return data;
     }
 
     public T removeByIndex(int ind){
@@ -401,18 +446,6 @@ public class MyLinkedList<T> {
         return ml2;
     }
 
-    public boolean contains(T data){
-        if(head == null)
-            throw new RuntimeException("No data found!!!");
-        Node curr = head;
-        while(curr!=null){
-            if(curr.getData()==data)
-                return true;
-            curr = curr.getNext();
-        }
-        return false;
-    }
-
     public T[] toArray(){
         if(head == null)
             throw new RuntimeException("No data found!!!");
@@ -490,40 +523,6 @@ public class MyLinkedList<T> {
         Node temp = curr1.getNext();
         curr1.setNext(curr2.getNext());
         curr2.setNext(temp);
-    }
-
-    public void clear(){
-        head=tail=null;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        MyLinkedList ml2 = (MyLinkedList) obj;
-        if(this.size()!=ml2.size())
-            return false;
-        Node curr1 = this.getHead();
-        Node curr2 = ml2.getHead();
-        while(curr1!=null){
-            if(!(curr1.getData()==curr2.getData()))
-                return false;
-            curr1 = curr1.getNext();
-            curr2 = curr2.getNext();
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        String s = "[ ";
-        Node curr = head;
-        while(curr!=null){
-            if(curr==tail)
-                s+=curr.getData();
-            else
-                s+=curr.getData()+", ";
-            curr = curr.getNext();
-        }
-        return s + " ]";
     }
 
 }
