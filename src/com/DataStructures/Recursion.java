@@ -1,4 +1,4 @@
-package com.DataStructures.Methods;
+package com.DataStructures;
 
 import java.util.*;
 import java.lang.*;
