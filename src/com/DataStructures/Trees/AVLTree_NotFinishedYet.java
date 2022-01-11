@@ -15,18 +15,18 @@ public class AVLTree_NotFinishedYet {
     }
 
     private TreeNode add(TreeNode root, Integer value) {
-        if (root == null) {
+        if (root == null)
             root = new TreeNode(value);
-            return root;
-        } else {
+        else {
             if (value > root.data) {
                 root.right = this.add(root.right, value);
             } else if (value < root.data) {
                 root.left = this.add(root.left, value);
             }
 
-            return root;
         }
+        return root;
+
     }
 
     private void lRotation(TreeNode curr) {

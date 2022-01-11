@@ -1,6 +1,6 @@
 package com.DataStructures.Hashing;
 
-import com.DataStructures.Node;
+import com.DataStructures.LinkedLists.Node;
 
 public class StringSet {
     private Node<String>[] arr = new Node[52];
@@ -23,9 +23,7 @@ public class StringSet {
                 if(curr.getData().equals(str))
                     return;
                 curr.setNext(new Node<String>(str));
-
             }
-
         }
     }
 

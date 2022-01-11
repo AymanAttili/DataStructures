@@ -1,4 +1,4 @@
-package com.DataStructures;
+package com.DataStructures.ArrayList;
 
 public abstract class MyAbstract<E> {
     private int size=0;

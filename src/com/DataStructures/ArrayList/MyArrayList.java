@@ -1,6 +1,6 @@
-package com.DataStructures;
+package com.DataStructures.ArrayList;
 
-public class MyArrayList<E> extends MyAbstract<E>{
+public class MyArrayList<E> extends MyAbstract<E> {
     private static final int capacity = 5;
     E[] arr = (E[]) new Object[capacity];
     int size = super.getSize();

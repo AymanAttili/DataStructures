@@ -29,6 +29,7 @@ public class MyQueue {
         rev();
         arr.add(0,temp);
     }
+
     public boolean isEmpty(){
         return (size==0);
     }
@@ -40,6 +41,5 @@ public class MyQueue {
     public String toString() {
         return arr.toString();
     }
-
 
 }

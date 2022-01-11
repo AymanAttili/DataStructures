@@ -1,6 +1,6 @@
 package com.DataStructures.Stacks;
 
-import com.DataStructures.Node;
+import com.DataStructures.LinkedLists.Node;
 
 import java.util.EmptyStackException;
 
@@ -48,5 +48,19 @@ public class MyLinkedListStack<T> {
         if(head==null)
             throw new EmptyStackException();
         return tail.getData();
+    }
+
+    @Override
+    public String toString() {
+        String s = "[ ";
+        Node curr = head;
+        while(curr!=null){
+            if(curr==tail)
+                s+=curr.getData();
+            else
+                s+=curr.getData()+", ";
+            curr = curr.getNext();
+        }
+        return s + " ]";
     }
 }

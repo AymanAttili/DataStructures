@@ -1,6 +1,6 @@
 package com.DataStructures.Queues;
 
-import com.DataStructures.DoublyNode;
+import com.DataStructures.LinkedLists.DoublyNode;
 
 import java.util.NoSuchElementException;
 
@@ -27,8 +27,6 @@ public class MyDeque<E> {
         else{
             temp.setNext(head);
             head=temp;
-
-
         }
         size++;
         return head.getData();
@@ -91,6 +89,7 @@ public class MyDeque<E> {
         size--;
         return temp;
     }
+
     public E pollLast(){
         if(head==null)
             return null;
@@ -117,6 +116,7 @@ public class MyDeque<E> {
             return null;
         return head.getData();
     }
+
     public E getLast() {
         if(head==null)
             throw new NoSuchElementException("Empty deque");
@@ -128,7 +128,6 @@ public class MyDeque<E> {
             return null;
         return tail.getData();
     }
-
 
     @Override
     public String toString() {

@@ -1,4 +1,4 @@
-package com.DataStructures;
+package com.DataStructures.LinkedLists;
 public class Node<E> {
     private E data;
     private Node next;

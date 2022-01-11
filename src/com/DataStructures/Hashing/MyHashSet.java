@@ -1,6 +1,6 @@
 package com.DataStructures.Hashing;
 
-import com.DataStructures.Node;
+import com.DataStructures.LinkedLists.Node;
 
 public class MyHashSet{
     private int size = 10;
@@ -25,7 +25,6 @@ public class MyHashSet{
             curr.setNext(new Node<Integer>(data));
         }
     }
-
 
     public void remove(int data) {
         int index = hashCode(data);
@@ -61,8 +60,6 @@ public class MyHashSet{
         return false;
     }
 
-
-
     public int hashCode(Integer value){
         return value%size;
     }
@@ -79,5 +76,4 @@ public class MyHashSet{
         }
         return str;
     }
-
 }

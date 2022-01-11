@@ -1,7 +1,6 @@
 package com.DataStructures.Trees;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class BST {
     TreeNode root;
@@ -37,13 +36,11 @@ public class BST {
     public void add2(Integer value) {
         add2(root, value);
     }
-
     private void add2(TreeNode root, Integer value) {
         if (root == null) {
             this.root = new TreeNode(value);
             return;
         }
-
         TreeNode curr = root;
         while (true) {
             if (value > curr.data) {
@@ -59,14 +56,12 @@ public class BST {
                 }
                 curr = curr.left;
             }
-
         }
     }
 
     public void preOrder() {
         preOrder(root);
     }
-
     public void preOrder(TreeNode root) {
         if (root == null)
             return;
@@ -79,7 +74,6 @@ public class BST {
     public void inOrder() {
         inOrder(root);
     }
-
     public void inOrder(TreeNode root) {
         if (root == null)
             return;
@@ -93,7 +87,6 @@ public class BST {
     public void postOrder() {
         postOrder(root);
     }
-
     public void postOrder(TreeNode root) {
         if (root == null)
             return;
@@ -107,7 +100,6 @@ public class BST {
     public void BFS() {
         BFS(root);
     }
-
     public void BFS(TreeNode root) {
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
@@ -120,13 +112,11 @@ public class BST {
                 q.add(f.right);
         }
         System.out.println();
-
     }
 
     public void clear() {
         root = null;
     }
-
     public boolean remove(int x) {
         if (!contains(x))
             return false;
@@ -199,7 +189,6 @@ public class BST {
     public boolean contains(int value) {
         return contains(this.root, value);
     }
-
     private boolean contains(TreeNode root, int value) {
         if (root == null)
             return false;
@@ -218,7 +207,6 @@ public class BST {
     public int numNRec() {
         return numNRec(root);
     }
-
     private int numNRec(TreeNode root) {
         if (root == null)
             return 0;
@@ -228,53 +216,11 @@ public class BST {
     public int maxSum() {
         return maxSum(root);
     }
-
     private int maxSum(TreeNode root) {
         if (root == null)
             return 0;
         return root.data + Math.max(maxSum(root.right), maxSum(root.left));
     }
-
-    /////////////////////////دورة الداتا/////////////////
-    ////////////////////////////////////////////////
-    public int maxDepth() {
-        return maxDepth(root);
-    }
-
-    private int maxDepth(TreeNode root) {
-        if (root == null)
-            return 0;
-        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
-    }
-
-    public String path(Integer value) {
-        return path(root, value);
-    }
-
-    private String path(TreeNode root, Integer value) {
-        if (!contains(value))
-            return "Not found";
-        if (root.data.equals(value))
-            return "" + value;
-        if (value > root.data)
-            return root.data + "->" + path(root.right, value);
-        else
-            return root.data + "->" + path(root.left, value);
-    }
-
-    public int numOfLeaves() {
-        return numOfLeaves(root);
-    }
-
-    private int numOfLeaves(TreeNode root) {
-        if (root == null)
-            return 0;
-        if (root.left == null && root.right == null)
-            return 1;
-        return numOfLeaves(root.right) + numOfLeaves(root.left);
-    }
-//////////////////
-
 }
 
 

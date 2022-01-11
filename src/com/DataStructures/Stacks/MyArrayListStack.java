@@ -53,5 +53,4 @@ public class MyArrayListStack<E> {
         return arr.toString();
     }
 
-
 }

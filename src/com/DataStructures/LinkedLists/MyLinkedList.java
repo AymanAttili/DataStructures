@@ -1,4 +1,4 @@
-package com.DataStructures;
+package com.DataStructures.LinkedLists;
 
 public class MyLinkedList<T> {
     private Node<T> head;
@@ -27,6 +27,7 @@ public class MyLinkedList<T> {
     public void setTail(Node tail) {
         this.tail = tail;
     }
+
 
     ///Basic Methods/////////////////////
     public int size(){
@@ -74,6 +75,25 @@ public class MyLinkedList<T> {
         else{
             temp.setNext(head);
             head=temp;
+        }
+    }
+
+    public void addByIndex(int ind,T data){
+        if(ind<1 || ind>size()+1)
+            throw new RuntimeException("Out of list bounds");
+        if(ind==1)
+            addFirst(data);
+        else if(ind==size()+1)
+            addLast(data);
+        else {
+            Node temp = new Node(data);
+            Node curr = head;
+            while (ind > 2) {
+                curr = curr.getNext();
+                ind--;
+            }
+            temp.setNext(curr.getNext());
+            curr.setNext(temp);
         }
     }
 
@@ -167,6 +187,8 @@ public class MyLinkedList<T> {
         return s + " ]";
     }
 
+
+
     //Extra Methods/////////////
     public void addRec(T data){
         if(head==null){
@@ -181,25 +203,6 @@ public class MyLinkedList<T> {
             return;
         }
         addRec(curr.getNext(),data);
-    }
-
-    public void addByIndex(int ind,T data){
-        if(ind<1 || ind>size()+1)
-            throw new RuntimeException("Out of list bounds");
-        if(ind==1)
-            addFirst(data);
-        else if(ind==size()+1)
-            addLast(data);
-        else {
-            Node temp = new Node(data);
-            Node curr = head;
-            while (ind > 2) {
-                curr = curr.getNext();
-                ind--;
-            }
-            temp.setNext(curr.getNext());
-            curr.setNext(temp);
-        }
     }
 
     public void addAll1(int ind , T[] elements){
@@ -524,7 +527,6 @@ public class MyLinkedList<T> {
         curr1.setNext(curr2.getNext());
         curr2.setNext(temp);
     }
-
 }
 
 

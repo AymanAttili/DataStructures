@@ -30,4 +30,8 @@ public class StackBy2Queues {
         return q1.dequeue();
     }
 
+    @Override
+    public String toString() {
+        return q1.toString();
+    }
 }

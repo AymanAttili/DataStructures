@@ -11,7 +11,6 @@ public class QuickSortTest {
     }
 
 
-
     ///pivot is the first element////////
     public static void sort1(int[] arr){
         sort1(arr,0,arr.length-1);
@@ -70,6 +69,8 @@ public class QuickSortTest {
     }
 
 
+
+
     ///pivot is the last element////////
     public static void sort3(int[] arr){
         sort3(arr,0,arr.length-1);
@@ -99,8 +100,6 @@ public class QuickSortTest {
         sort3(arr,start,l-1);
         sort3(arr,r+1,end);
     }
-
-
 
 
     public static void main(String[] args) {

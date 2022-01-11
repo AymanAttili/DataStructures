@@ -1,4 +1,4 @@
-package com.DataStructures;
+package com.DataStructures.LinkedLists;
 
 public class DoublyNode<E> {
     private E data;
