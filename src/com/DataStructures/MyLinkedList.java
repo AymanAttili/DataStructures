@@ -12,17 +12,6 @@ public class MyLinkedList<T> {
             addLast(elements[i]);
         }
     }
-
-    public int size(){
-        int count = 0;
-        Node curr = head;
-        while(curr!=null){
-            count++;
-            curr = curr.getNext();
-        }
-        return count;
-    }
-
     public Node getHead() {
         return head;
     }
@@ -39,8 +28,15 @@ public class MyLinkedList<T> {
         this.tail = tail;
     }
 
-    public void clear(){
-        head=tail=null;
+
+    public int size(){
+        int count = 0;
+        Node curr = head;
+        while(curr!=null){
+            count++;
+            curr = curr.getNext();
+        }
+        return count;
     }
 
     public T get(int ind){
@@ -102,8 +98,12 @@ public class MyLinkedList<T> {
         if(head==null)
             head=tail=temp;
         else{
-            tail.setNext(temp);
-            tail=temp;
+            Node<T> curr = head;
+            while(curr.getNext()!=null) {
+                curr = curr.getNext();
+            }
+            curr.setNext(new Node<T>(data));
+            tail = curr.getNext();
         }
     }
 
@@ -163,7 +163,8 @@ public class MyLinkedList<T> {
         T data = (T)head.getData();
         if (head == tail) {
             head = tail = null;
-        } else {
+        }
+        else {
             head = head.getNext();
         }
         return data;
@@ -425,7 +426,6 @@ public class MyLinkedList<T> {
         return arr;
     }
 
-
     public void printRevRecursion(){
         if(head==null)
             return ;
@@ -436,15 +436,6 @@ public class MyLinkedList<T> {
         return;
     }
 
-
-    public void revRecursion(){
-        if(head==null)
-            return ;
-        T temp  = removeFirst();
-        revRecursion();
-        addLast(temp);
-        return;
-    }
     public void revRecursion1(){
         if(head==null)
             return ;
@@ -501,6 +492,10 @@ public class MyLinkedList<T> {
         curr2.setNext(temp);
     }
 
+    public void clear(){
+        head=tail=null;
+    }
+
     @Override
     public boolean equals(Object obj) {
         MyLinkedList ml2 = (MyLinkedList) obj;
@@ -530,7 +525,6 @@ public class MyLinkedList<T> {
         }
         return s + " ]";
     }
-
 
 }
 

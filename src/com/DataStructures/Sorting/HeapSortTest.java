@@ -1,4 +1,4 @@
-package com.DataStructures.sort;
+package com.DataStructures.Sorting;
 
 public class HeapSortTest {
 

@@ -1,4 +1,4 @@
-package com.DataStructures.Sets;
+package com.DataStructures.Hashing;
 
 import com.DataStructures.Node;
 

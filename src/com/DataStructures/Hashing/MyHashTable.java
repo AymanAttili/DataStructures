@@ -1,4 +1,4 @@
-package com.DataStructures.Sets;
+package com.DataStructures.Hashing;
 
 import java.util.ArrayList;
 import java.util.HashSet;
