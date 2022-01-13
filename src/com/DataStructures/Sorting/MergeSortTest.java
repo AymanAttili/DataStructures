@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class MergeSortTest {
 
-    public static int[] merge(int[] a,int[] b){
+    private static int[] merge(int[] a,int[] b){
         int i=0,j=0,k=0;
         int [] c = new int[a.length+b.length];
         while(i<a.length && j<b.length){
@@ -31,7 +31,7 @@ public class MergeSortTest {
         return c;
     }
 
-    public static int [] mergeSort(int [] arr){
+    private static int [] mergeSort(int [] arr){
         if(arr.length>1){
             int mid = arr.length/2;
             int[] a = Arrays.copyOfRange(arr,0,mid);

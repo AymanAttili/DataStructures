@@ -117,6 +117,7 @@ public class BST {
     public void clear() {
         root = null;
     }
+
     public boolean remove(int x) {
         if (!contains(x))
             return false;

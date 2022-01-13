@@ -8,6 +8,7 @@ import java.util.*;
 public class hashingMethods {
 
     ////A method finds if the array has duplicates.
+
     public boolean hasDuplicates(int[] nums){
         HashSet<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
@@ -19,7 +20,9 @@ public class hashingMethods {
             return false;
     }
 
+
     ////A method takes a linked list and finds if it has a cycle.
+
     public boolean hasCycle(MyLinkedList ll){
         HashSet<Node> set = new HashSet<>();
         Node curr = ll.getHead();
@@ -32,7 +35,9 @@ public class hashingMethods {
         return false;
     }
 
+
     ////A method prints the first unique number(has just one occurrence).
+
     public void firstUnique(String str){
         HashMap<Character,Integer> map = new HashMap<>();
         for (int i = 0; i < str.length(); i++) {
@@ -51,7 +56,9 @@ public class hashingMethods {
         System.out.println(-1);
     }
 
+
     ////given two Array Lists, return an Array List that contains the intersection of the two lists. Note: (the intersection may contain duplicates).
+
     public static ArrayList<Integer> Dup(ArrayList<Integer> l1,ArrayList<Integer> l2){
         HashMap<Integer,Integer> m1 = new HashMap<>();
         HashMap<Integer,Integer> m2 = new HashMap<>();
@@ -73,7 +80,9 @@ public class hashingMethods {
         return list;
     }
 
-    ////////////
+
+    ////A method that checks if there is two numbers in the array whose sum is equal to target.
+
     public static boolean twoSum(int[] arr , int target){
         HashSet<Integer> set = new HashSet<>();
         for (int i = 0; i < arr.length; i++) {
@@ -86,7 +95,9 @@ public class hashingMethods {
         return false;
     }
 
-    ////////////
+
+    ////A method that checks if all the element in the array are unique (mentioned once).
+
     public static boolean uniqueOccurrences(int[] nums){
         HashMap<Integer,Integer> hm = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
@@ -100,7 +111,9 @@ public class hashingMethods {
         return (set.size()==hm.size());
     }
 
-    ////////////
+
+    ////A method that find the number of unique elements (mentioned once).
+
     public static int numOfUnique(int[] nums){
         HashMap<Integer,Integer> hm = new HashMap<>();
         for(int i=0 ; i<nums.length ; i++){
@@ -114,7 +127,9 @@ public class hashingMethods {
         return count;
     }
 
-    ////////////
+
+    ////(You have some stones, and you want to know how many of these are jewels).
+
     public static int numOfJewels(String[] stones, String[] jewels) {
         HashSet<String> set = new HashSet<>();
         int count = 0;
@@ -128,7 +143,9 @@ public class hashingMethods {
         return count;
     }
 
-    ////////////
+
+    ////https://leetcode.com/problems/check-if-the-sentence-is-pangram/
+
     public static boolean pangram(String str){
         HashSet<Character> set = new HashSet<>();
         for(int i=0 ; i<str.length() ; i++){
@@ -137,7 +154,9 @@ public class hashingMethods {
         return (set.size()==26);
     }
 
-    ////////////
+
+    ////https://leetcode.com/problems/missing-number/
+
     public static int missingNumber(int[] nums){
         HashSet<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length ; i++) {
@@ -151,7 +170,9 @@ public class hashingMethods {
         return c;
     }
 
-    ////////////
+
+    ////https://leetcode.com/problems/isomorphic-strings/
+
     public static boolean isomorphic(String s1 , String s2){
         if(s1.length()!=s2.length())
             return false;
@@ -169,7 +190,9 @@ public class hashingMethods {
         return true;
     }
 
-    ////////////
+
+    ////https://leetcode.com/problems/contains-duplicate-ii/
+
     public static boolean containsNearbyDuplicates(int[] nums, int k){
         HashMap<Integer,Integer> hm = new HashMap<>();
         for(int i=0 ; i<nums.length ; i++){
@@ -186,7 +209,9 @@ public class hashingMethods {
         return false;
     }
 
-    ////////////
+
+    ////https://leetcode.com/problems/count-the-number-of-consistent-strings/
+
     public static int allowed(String allowed, String[] words){
         HashSet<Character> h1 = new HashSet<>();
         int c=0;
@@ -206,7 +231,10 @@ public class hashingMethods {
         return c;
     }
 
-    ////////////
+
+    ////A method that checks if the given string is good-A good string is a string in which all
+    // the characters have the same occurrence-.
+
     public static boolean good(String str){
         HashMap<Character,Integer> hm = new HashMap<>();
         for(int i=0 ; i<str.length() ; i++)
@@ -220,7 +248,10 @@ public class hashingMethods {
         return true;
     }
 
-    ////////////
+
+    ////given two Array Lists, return an Array List that contains the the intersection of the
+    //two lists. Note: the intersection may contain duplicates.
+
     public static ArrayList<Integer> intersection(ArrayList<Integer> a1 , ArrayList<Integer> a2){
         HashMap<Integer,Integer> m1 = new HashMap<>();
         HashMap<Integer,Integer> m2 = new HashMap<>();
@@ -240,48 +271,10 @@ public class hashingMethods {
         return a;
     }
 
-    ////////////
-    public static void swapDuplicate(MyLinkedList m2) {
-        HashMap<Integer, Integer> hm = new HashMap<>();
-        Node curr = m2.getHead();
-        Integer rep = null;
-        while (curr != null) {
-            hm.put((Integer) curr.getData(), hm.getOrDefault(curr.getData(), 0) + 1);
-            if (hm.get(curr.getData()) == 2)
-                rep = (Integer) curr.getData();
-            curr = curr.getNext();
-        }
-        ///////
-        Node pre = m2.getHead();
-        curr = pre.getNext();
-        if (m2.getHead().getData() != rep) {
-            while (curr.getData() != rep) {
-                pre = pre.getNext();
-                curr = curr.getNext();
-            }
-            pre.setNext(curr.getNext());
-            curr.setNext(m2.getHead());
-            m2.setHead(curr);
-        }
 
-        //////
+    ////A method that checks if all elements in the given arrayList have even occurrence(Odd --> occurrence%2 == 0).
 
-        pre = m2.getHead();
-        curr = pre.getNext();
-        while (curr.getData() != rep) {
-            pre = pre.getNext();
-            curr = curr.getNext();
-        }
-        if (curr != m2.getTail()) {
-            pre.setNext(curr.getNext());
-            m2.getTail().setNext(curr);
-            m2.setTail(curr);
-            m2.getTail().setNext(null);
-        }
-    }
-
-    ////////////
-    public static boolean fun(ArrayList<Integer> arr) {
+    public static boolean evenOcc(ArrayList<Integer> arr) {
         HashMap<Integer,Integer> hm = new HashMap<>();
         for(int i=0 ; i<arr.size() ; i++){
             //hm.put(arr.get(i),hm.getOrDefault(arr.get(i),0)+1);
@@ -300,7 +293,9 @@ public class hashingMethods {
         return true;
     }
 
-    ////////////
+
+    /////A method that prints the indices of the two element whose sum equal to target.
+
     public static void targetIndices(int[] nums, int target){
         HashMap<Integer,Integer> map = new HashMap<>();
         for(int i=0 ; i<nums.length ; i++)

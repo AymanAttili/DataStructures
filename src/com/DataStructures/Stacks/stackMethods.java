@@ -4,6 +4,9 @@ package com.DataStructures.Stacks;
 import java.util.*;
 public class stackMethods {
 
+
+    ////A method that removes the middle element in the stack(recursion).
+
     public static void removeMidOfStack(Stack<Integer> s){
         removeMidOfStack(s,s.size());
     }
@@ -19,30 +22,27 @@ public class stackMethods {
         s.push(temp);
     }
 
-    //////////////
-    public static String CapSma(String str){
-        String str2 = "";
+
+    ////A method takes a string then if it finds a capital letter next to a small letter (similar letter) deletes them.
+
+    public static String CapSma(String str) {
         Stack<Character> s = new Stack<>();
-        for(int i=0 ; i<str.length() ; i++){
-            if(s.isEmpty())
+        for (int i = 0; i < str.length(); i++) {
+            if (!s.isEmpty() && Math.abs(s.peek() - str.charAt(i)) == 32)
+                s.pop();
+            else
                 s.push(str.charAt(i));
-            else{
-                if(Math.abs(s.peek()-str.charAt(i))==32)
-                    s.pop();
-                else
-                    s.push(str.charAt(i));
-            }
         }
-        Stack<Character> s3 = new Stack<>();
+
+        String str2 = "";
         while (!s.isEmpty())
-            s3.push(s.pop());
-        s=s3;
-        while(!s.isEmpty())
-            str2+=s.pop();
+            str2=s.pop()+str2;
         return str2;
     }
 
-    //////////////
+
+    ////A method that prints the next greater element for all elements of the array(if there is no next greater for an element the print -1).
+
     public static void NGE(int[] arr){
         Stack<Integer> s = new Stack<>();
         for(int i=0 ; i<arr.length ; i++){
@@ -62,7 +62,10 @@ public class stackMethods {
         while(!s.isEmpty())
             System.out.println(s.pop()+"---->" + -1);
     }
-    //////////////
+
+
+    ////A method that merge two sorted stacks with keeping the resultant stack sorted.
+
     public static Stack<Integer> mergeStacks(Stack<Integer> s1 , Stack<Integer> s2){
         Stack<Integer> s = new Stack<>();
         while(!s1.isEmpty() && !s2.isEmpty()){
@@ -83,7 +86,9 @@ public class stackMethods {
 
     }
 
-    //////////////
+
+    ////A method that reverses the given stack(recursion).
+
     public static void revStack(Stack<Integer> s){
         if(!s.isEmpty()) {
             int temp = s.pop();
@@ -92,7 +97,7 @@ public class stackMethods {
         }
         return;
     }
-    private static void putBottom(Stack<Integer> s, int x) {
+    private static void putBottom(Stack<Integer> s, int x) {////to put the element x int the bottom of stack(recursion).
         if(s.isEmpty())
             s.push(x);
         else{
@@ -102,7 +107,9 @@ public class stackMethods {
         }
     }
 
-    //////////////
+
+    ////A method that moves prime numbers to the bottom of stack.
+
     private static Stack movePrimes(Stack s){
         Stack<Integer> s2 = new Stack<>();
         while(!s.isEmpty()){
@@ -110,7 +117,7 @@ public class stackMethods {
             if(s2.isEmpty() || !isPrime(x))
                 s2.push(x);
             else{
-                while(!isPrime(s2.peek()))
+                while(!s2.isEmpty() && !isPrime(s2.peek()))
                     s.push(s2.pop());
                 s2.push(x);
             }
@@ -125,9 +132,11 @@ public class stackMethods {
         return true;
     }
 
-    //////////////
+
+    ////A method that converts the number n to a number with base (base).
+
     public static String convert(int n,int base){
-        MyArrayListStack<Integer> s = new MyArrayListStack<>();
+        Stack<Integer> s = new Stack<>();
         while(n>0){
             s.push(n%base);
             n/=base;
@@ -139,10 +148,12 @@ public class stackMethods {
         return str;
     }
 
-    //////////////
+
+    ////A method that reverses the given string.
+
     public static String rev(String str){
         String str2 = "";
-        MyArrayListStack<Character> s = new MyArrayListStack<>();
+        Stack<Character> s = new Stack<>();
         for(int i=0 ; i<str.length() ; i++)
             s.push(str.charAt(i));
         for(int i=0 ; i<str.length() ; i++)
@@ -150,7 +161,9 @@ public class stackMethods {
         return str2;
     }
 
-    //////////////
+
+    ////A method that removes and returns the bottom element in the stack.
+
     public static <E>E removeBottom(Stack<E> st){
         if(st.isEmpty())
             throw new EmptyStackException();
@@ -162,7 +175,9 @@ public class stackMethods {
         return removed;
     }
 
-    //////////////
+
+    ////A method that checks if the string of brackets-- {},(),[] --has no errors.
+
     public static boolean check(String s){
         MyStack<Character> stack = new MyStack<Character>();
         for(int i=0 ; i<s.length() ; i++){

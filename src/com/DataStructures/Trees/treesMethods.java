@@ -6,6 +6,7 @@ public class treesMethods {
 
 
     ////https://leetcode.com/problems/increasing-order-search-tree/
+
     public static TreeNode increasingBST(TreeNode root) {
         if(root==null)
             return null;
@@ -20,15 +21,13 @@ public class treesMethods {
         }
         return root;
     }
-
     private static void topRight(TreeNode temp, TreeNode right) {
         while(temp.right!=null)
             temp = temp.right;
         temp.right=right;
     }
 
-
-
+    ////Another solution for the question above.
     static ArrayList<TreeNode> arr = new ArrayList<>();
     public static TreeNode increasingBST2(TreeNode root) {
         arr.clear();
@@ -43,15 +42,17 @@ public class treesMethods {
         }
         return arr.get(0);
     }
-    private static void inOrder(TreeNode root) {//To add the elements of tree ascending
+    private static void inOrder(TreeNode root) {//To add the elements of tree ascending.
         if(root==null)
             return ;
         inOrder(root.left);
         arr.add(root);
         inOrder(root.right);
     }
-    
+
+
     ////https://leetcode.com/problems/binary-tree-pruning/
+
     public static TreeNode pruneTree(TreeNode root) {
         if(root==null)
             return null;
@@ -59,16 +60,18 @@ public class treesMethods {
         root.left=pruneTree(root.left);
         root.right = pruneTree(root.right);
 
-        if(root.data==0 && root.left==root.right && root.left==null) {
-
+        if(root.data==0 && root.left==root.right && root.left==null)
             return null;
-        }
-        return root;
 
+        return root;
     }
 
-    ////////////
+
+    ////https://leetcode.com/problems/balanced-binary-tree/
+
     public static boolean isBalanced(TreeNode root){
+        if(root==null)
+            return true;
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         while(!q.isEmpty()) {
@@ -83,43 +86,32 @@ public class treesMethods {
         return true;
     }
 
-    ////////////
-    public static int getLevelDiff(TreeNode root){
-        ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
-        int z= maxDepth(root);
-        for(int i=0 ; i<z ; i++)
-            arr.add(new ArrayList<>());
-        int c=0;
-        for (int i = 0; i < z; i++) {
-            if(i%2==0)
-                for(int j=0 ; j<arr.get(i).size() ; j++)
-                    c+=arr.get(i).get(j);
-            else
-                for(int j=0 ; j<arr.get(i).size() ; j++)
-                    c-=arr.get(i).get(j);
 
-        }
-        return c;
-    }
+    ////To find the maximum depth for a specific node.
 
-    ////////////
     private static int maxDepth(TreeNode root) {
         if(root==null)
             return 0;
         return 1+Math.max(maxDepth(root.left),maxDepth(root.right));
     }
 
-    ////////////
-    private static void getLevelDiff(TreeNode root, int i, ArrayList<ArrayList<Integer>> arr) {
-        if(root==null)
-            return;
-        arr.get(i).add(root.data);
-        getLevelDiff(root.right,i+1,arr);
-        getLevelDiff(root.left,i+1,arr);
 
+    ////https://practice.geeksforgeeks.org/problems/odd-even-level-difference/1/#
+
+    public static int getLevelDiff(TreeNode root){
+        return getLevelDiff(root,0);
+    }
+    private static int getLevelDiff(TreeNode root, int i) {
+        if(root==null)
+            return 0;
+        if(i%2==1)
+            return -1*root.data + getLevelDiff(root.left,i+1) + getLevelDiff(root.right,i+1);
+        return root.data + getLevelDiff(root.left,i+1) + getLevelDiff(root.right,i+1);
     }
 
-    ////////////
+
+    ////https://leetcode.com/problems/sum-of-left-leaves/
+
     public static int sumOfLeftLeaves(TreeNode root){
         return sumOfLeftLeaves(root,false);
     }
@@ -132,28 +124,31 @@ public class treesMethods {
         return sumOfLeftLeaves(root.left,true)+sumOfLeftLeaves(root.right,false);
     }
 
-    ////////////
-    public static boolean hasPathSum(TreeNode root , int target){
-        return hasPathSum(root,0,target);
-    }
-    private static boolean hasPathSum(TreeNode root, int sum, int target) {
+
+    ////https://leetcode.com/problems/path-sum/
+
+    public static boolean hasPathSum(TreeNode root , int targetSum){
         if(root==null)
-            return (sum==target);
+            return false;
+        return hasPathSum(root,0,targetSum);
+    }
+    private static boolean hasPathSum(TreeNode root, int sum, int targetSum) {
+        if(root==null)
+            return false;
         if(root.left==root.right && root.left==null){
             sum+=root.data;
-            return (sum==target);
+            return (sum==targetSum);
         }
-
         else{
-            if(sum>target)
-                return false;
             sum+= root.data;
-            return hasPathSum(root.left,sum,target) || hasPathSum(root.right,sum,target);
+            return hasPathSum(root.left,sum,targetSum) || hasPathSum(root.right,sum,targetSum);
         }
     }
 
-    ////////////
-    public String path(TreeNode root, Integer value) {
+
+    ////A method that returns the path of a specific element in tree from root to it.
+
+    public static String path(TreeNode root, Integer value) {
         if (!contains(root,value))
             return "Not found";
         if (root.data.equals(value))
@@ -174,13 +169,70 @@ public class treesMethods {
             return contains(root.left, value);
     }
 
-    ////////////
+
+    ////A method that counts the number of leaves in the BST.
+
     public int numOfLeaves(TreeNode root) {
         if (root == null)
             return 0;
         if (root.left == null && root.right == null)
             return 1;
         return numOfLeaves(root.right) + numOfLeaves(root.left);
+    }
+
+
+    ////https://leetcode.com/problems/check-completeness-of-a-binary-tree/
+
+    public boolean isCompleteTree(TreeNode root) {
+        if(root==null)
+            return true;
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        boolean hasNull = false;
+        while(!q.isEmpty()){
+            TreeNode temp = q.poll();
+            if(temp.left!=null){
+                if(hasNull)
+                    return false;
+                q.add(temp.left);
+            }
+            else
+                hasNull=true;
+            if(temp.right!=null){
+                if(hasNull)
+                    return false;
+                q.add(temp.right);
+            }
+            else
+                hasNull=true;
+        }
+        return true;
+    }
+
+
+    ////https://leetcode.com/problems/subtree-of-another-tree/
+
+    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            TreeNode temp = q.poll();
+            if(temp.data==subRoot.data)
+                if(equals(temp,subRoot))
+                    return true;
+            if(temp.left!=null)
+                q.add(temp.left);
+            if(temp.right!=null)
+                q.add(temp.right);
+        }
+        return false;
+    }
+    public boolean equals(TreeNode root,TreeNode subRoot){
+        if(root==subRoot && root==null)
+            return true;
+        if(root!=null && subRoot!=null &&root.data==subRoot.data)
+            return equals(root.left,subRoot.left)&&equals(root.right,subRoot.right);
+        return false;
     }
 }
 

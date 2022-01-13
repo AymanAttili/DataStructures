@@ -5,6 +5,8 @@ import java.util.*;
 
 public class linkedListMethods {
 
+    ////A method that reverses the given linked list (recursion).
+
     public static void revLL(LinkedList<Integer> l){
         if(l.isEmpty())
             return ;
@@ -13,7 +15,9 @@ public class linkedListMethods {
         l.add(temp);
     }
 
-    ////////////
+
+    ////A method that merge two sorted linked lists with keeping the resultant linked list sorted.
+
     public static MyLinkedList<Integer> mergeSorted(MyLinkedList<Integer> l1 , MyLinkedList<Integer> l2) {
         MyLinkedList<Integer> l3 = new MyLinkedList<Integer>();
         Node curr1 = l1.getHead();
@@ -40,7 +44,9 @@ public class linkedListMethods {
         return l3;
     }
 
-    ////////////
+
+    ////A method that converts boolean linked list to integer (True--> 1  , False--> 0).
+
     public static int toInt(MyLinkedList<Boolean> x){
         int z=0,y=0,i=0;
         Node curr = x.getHead();

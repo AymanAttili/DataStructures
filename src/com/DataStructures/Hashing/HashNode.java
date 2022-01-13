@@ -1,7 +1,7 @@
 package com.DataStructures.Hashing;
 
 public class HashNode<K,V> {
-     K key;
+    K key;
     V value;
     HashNode next;
 
