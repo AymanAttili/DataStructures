@@ -234,6 +234,17 @@ public class treesMethods {
             return equals(root.left,subRoot.left)&&equals(root.right,subRoot.right);
         return false;
     }
+
+
+    ////A method that finds the maximum sum from the root to leaves;
+
+    public int maxSum(TreeNode root) {
+        if (root == null)
+            return 0;
+        return root.data + Math.max(maxSum(root.right), maxSum(root.left));
+    }
+
+
 }
 
 

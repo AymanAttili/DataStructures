@@ -13,11 +13,13 @@ public class BST {
         return root;
     }
 
-    public TreeNode add(Integer value) {
+
+    ////Basic methods://///////////////////////////////////////////////
+
+    public TreeNode add(Integer value) {//Add by recursion.
         root = add(root, value);
         return root;
     }
-
     private TreeNode add(TreeNode root, Integer value) {
         if (root == null) {
             root = new TreeNode(value);
@@ -33,9 +35,127 @@ public class BST {
     }
 
 
+    public boolean remove(int x){//Remove by recursion.
+        return (remove(root,x)!=null);
+    }
+    private TreeNode remove(TreeNode root, int x) {
+        if(root==null)
+            return null;
+        if(x>root.data)
+            root.right = remove(root.right,x);
+        else if(x<root.data)
+            root.left = remove(root.left,x);
+        else{
+            if(root.right==null)
+                return root.left;
+            else if(root.left==null)
+                return root.right;
+            else{
+                root.data=maxValue(root.left);
+                root.left=remove(root.left,root.data);
+            }
+        }
+        return root;
+    }
+    private Integer maxValue(TreeNode root) {//To find the maximum value of a given subtree (helper method).
+        while (true) {
+            if (root.right == null)
+                break;
+            root = root.right;
+        }
+        return root.data;
+    }
+
+
+    public void preOrder() {
+        preOrder(root);
+    }//prints the tree pre-order traversal.
+    public void preOrder(TreeNode root) {
+        if (root == null)
+            return;
+        System.out.println(root.data);
+        preOrder(root.left);
+        preOrder(root.right);
+        return;
+    }
+
+
+    public void inOrder() {
+        inOrder(root);
+    }//prints the tree in-order traversal.
+    public void inOrder(TreeNode root) {
+        if (root == null)
+            return;
+
+        inOrder(root.left);
+        System.out.println(root.data);
+        inOrder(root.right);
+        return;
+    }
+
+
+    public void postOrder() {
+        postOrder(root);
+    }//prints the tree post-order traversal.
+    public void postOrder(TreeNode root) {
+        if (root == null)
+            return;
+
+        postOrder(root.left);
+        postOrder(root.right);
+        System.out.println(root.data);
+        return;
+    }
+
+
+    public void BFS() {
+        BFS(root);
+    }//prints the tree leve-order traversal.
+    public void BFS(TreeNode root) {
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        while (!q.isEmpty()) {
+            TreeNode f = q.poll();
+            System.out.print(f.data + " ");
+            if (f.left != null)
+                q.add(f.left);
+            if (f.right != null)
+                q.add(f.right);
+        }
+        System.out.println();
+    }
+
+
+    public boolean contains(int value) {
+        return contains(this.root, value);
+    }
+    private boolean contains(TreeNode root, int value) {
+        if (root == null)
+            return false;
+        if (root.data == value)
+            return true;
+        else if (value > root.data)
+            return contains(root.right, value);
+        else
+            return contains(root.left, value);
+    }
+
+
+    public boolean isEmpty() {
+        return (root == null);
+    }
+
+
+    public void clear() {
+        root = null;
+    }
+
+
+    ////Extra Methods://////////////////////////////////////////////////////////
+
     public void add2(Integer value) {
         add2(root, value);
-    }
+    }//Add by while loop.
     private void add2(TreeNode root, Integer value) {
         if (root == null) {
             this.root = new TreeNode(value);
@@ -59,66 +179,8 @@ public class BST {
         }
     }
 
-    public void preOrder() {
-        preOrder(root);
-    }
-    public void preOrder(TreeNode root) {
-        if (root == null)
-            return;
-        System.out.println(root.data);
-        preOrder(root.left);
-        preOrder(root.right);
-        return;
-    }
 
-    public void inOrder() {
-        inOrder(root);
-    }
-    public void inOrder(TreeNode root) {
-        if (root == null)
-            return;
-
-        inOrder(root.left);
-        System.out.println(root.data);
-        inOrder(root.right);
-        return;
-    }
-
-    public void postOrder() {
-        postOrder(root);
-    }
-    public void postOrder(TreeNode root) {
-        if (root == null)
-            return;
-
-        postOrder(root.left);
-        postOrder(root.right);
-        System.out.println(root.data);
-        return;
-    }
-
-    public void BFS() {
-        BFS(root);
-    }
-    public void BFS(TreeNode root) {
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
-        while (!q.isEmpty()) {
-            TreeNode f = q.poll();
-            System.out.print(f.data + " ");
-            if (f.left != null)
-                q.add(f.left);
-            if (f.right != null)
-                q.add(f.right);
-        }
-        System.out.println();
-    }
-
-    public void clear() {
-        root = null;
-    }
-
-    public boolean remove(int x) {
+    public boolean remove2(int x) {//////Remove using while loop.
         if (!contains(x))
             return false;
         boolean left = true;
@@ -149,63 +211,44 @@ public class BST {
                 pre.right = curr.right;
 
             else {
-                int temp = maxLeft(curr.right);
-                remove(temp);
+                int temp = maxLeft(curr.right).data;
+                remove2(temp);
                 curr.data = temp;
             }
         } else {
             if (curr.left == curr.right && curr.left == null)
                 root = null;
             else if (curr.left != null) {
-                int temp = maxRight(curr.left);
-                remove(temp);
+                int temp = maxRight(curr.left).data;
+                remove2(temp);
                 curr.data = temp;
             } else if (curr.right != null) {
-                int temp = maxLeft(curr.right);
-                remove(temp);
+                int temp = maxLeft(curr.right).data;
+                remove2(temp);
                 curr.data = temp;
             }
         }
         return true;
     }
-
-    private int maxRight(TreeNode root) {
+    private TreeNode maxRight(TreeNode root) {//to find the last right of the given node (helper method).
         while (true) {
             if (root.right == null)
                 break;
             root = root.right;
         }
-        return root.data;
+        return root;
     }
-
-    private int maxLeft(TreeNode root) {
+    private TreeNode maxLeft(TreeNode root) {//to find the last left of the given node (helper method).
         while (true) {
             if (root.left == null)
                 break;
             root = root.left;
         }
-        return root.data;
+        return root;
     }
 
-    public boolean contains(int value) {
-        return contains(this.root, value);
-    }
-    private boolean contains(TreeNode root, int value) {
-        if (root == null)
-            return false;
-        if (root.data == value)
-            return true;
-        else if (value > root.data)
-            return contains(root.right, value);
-        else
-            return contains(root.left, value);
-    }
 
-    public boolean isEmpty() {
-        return (root == null);
-    }
-
-    public int numNRec() {
+    public int numNRec() {//To count the number of nodes in tree (using recursion).
         return numNRec(root);
     }
     private int numNRec(TreeNode root) {
@@ -214,14 +257,6 @@ public class BST {
         return 1 + numNRec(root.left) + numNRec(root.right);
     }
 
-    public int maxSum() {
-        return maxSum(root);
-    }
-    private int maxSum(TreeNode root) {
-        if (root == null)
-            return 0;
-        return root.data + Math.max(maxSum(root.right), maxSum(root.left));
-    }
 }
 
 
