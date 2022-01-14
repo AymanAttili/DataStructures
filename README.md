@@ -1,13 +1,13 @@
 # DataStructures
 ## in this project i wrote all classes that we studied in (Data structure) course, you will see in this project the next topics:
 
-### 1- Arraylist.
+### 1- Array list.
 
-### 2- Linkedlist:
+### 2- Linked list:
 and its similar (DoublyLinkedList) with some extra methods.
 
 ### 3- Stacks
-(that built in many differnt data structures) with some extra methods.
+(that built in different data structures) with some extra methods.
 
 ### 4- Queues:
 with more than one type (like: circularQueue and deque).
@@ -19,7 +19,7 @@ with more than one type (like: circularQueue and deque).
 Binary search tree (BST) and AVL tree with some beautiful extra methods.
 
 ### 7- Sorting: 
-I wrote most of sorting algorithms (like: heap, merge, quick, etc...).
+I wrote most of the sorting algorithms (like: heap, merge, quick, etc...).
 
 ## please share this project as much as you can.
 
