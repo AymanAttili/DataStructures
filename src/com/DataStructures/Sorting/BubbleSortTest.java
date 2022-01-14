@@ -3,6 +3,8 @@ package com.DataStructures.Sorting;
 import java.util.Arrays;
 
 public class BubbleSortTest {
+    ////Average complexity = O(n^2)./////
+    ////Space complexity = O(1)./////
 
     private static void sort(int arr[])
     {

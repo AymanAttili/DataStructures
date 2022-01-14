@@ -3,6 +3,9 @@ package com.DataStructures.Sorting;
 import java.util.Arrays;
 
 public class SelectionSortTest {
+    ////Average complexity = O(n^2)./////
+    ////Space complexity = O(1)./////
+
     private static void sort(int arr[]) {
         int n = arr.length;
         for (int i = 0; i < n-1; i++)

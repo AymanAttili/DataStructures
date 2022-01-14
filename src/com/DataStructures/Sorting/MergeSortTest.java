@@ -3,6 +3,8 @@ package com.DataStructures.Sorting;
 import java.util.Arrays;
 
 public class MergeSortTest {
+    ////Average complexity = O(nlog n)./////
+    ////Space complexity = O(n)./////
 
     private static int[] merge(int[] a,int[] b){
         int i=0,j=0,k=0;

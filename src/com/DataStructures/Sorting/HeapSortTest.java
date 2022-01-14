@@ -1,6 +1,8 @@
 package com.DataStructures.Sorting;
 
 public class HeapSortTest {
+    ////Average complexity = O(nlog n)./////
+    ////Space complexity = O(1)./////
 
     static int Heap_Size;
 

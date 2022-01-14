@@ -3,6 +3,9 @@ package com.DataStructures.Sorting;
 import java.util.Arrays;
 
 public class ShellSortTest {
+    ////Average  time complexity = O(nlog n)./////
+    ////Space complexity = O(1)./////
+
 
     private static void shellSort(int[] arr){
         int n = arr.length;

@@ -3,13 +3,8 @@ package com.DataStructures.Sorting;
 import java.util.Arrays;
 
 public class QuickSortTest {
-
-    private static void swap(int[] arr, int l, int r) {
-        int temp = arr[l];
-        arr[l] = arr[r];
-        arr[r] = temp;
-    }
-
+    ////Average complexity = O(nlog n)./////
+    ////Space complexity = O(log n)./////
 
     ///pivot is the first element////////
     public static void sort1(int[] arr){
@@ -100,6 +95,14 @@ public class QuickSortTest {
         sort3(arr,start,l-1);
         sort3(arr,r+1,end);
     }
+
+
+    private static void swap(int[] arr, int l, int r) {
+        int temp = arr[l];
+        arr[l] = arr[r];
+        arr[r] = temp;
+    }
+
 
 
     public static void main(String[] args) {
