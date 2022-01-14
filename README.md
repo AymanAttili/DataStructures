@@ -13,7 +13,7 @@ in this project i wrote all classes that we studied in (Data structure) course, 
 
 6- Trees: Binary search tree (BST) and AVL tree with some beautiful extra methods.
 
-7- Sorting: i wrote most sorting algorithms (like: heap, merge, quick, etc...).
+7- Sorting: I wrote most of sorting algorithms (like: heap, merge, quick, etc...).
 
 please share this project as much as you can.
 
