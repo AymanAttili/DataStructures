@@ -3,16 +3,16 @@
 
 ### 1- Arraylist.
 
-### 2- Linkedlist
+### 2- Linkedlist:
 and its similar (DoublyLinkedList) with some extra methods.
 
 ### 3- Stacks
 (that built in many differnt data structures) with some extra methods.
 
-### 4- Queues
+### 4- Queues:
 with more than one type (like: circularQueue and deque).
 
-### 5- Hashing
+### 5- Hashing:
 : hashSet and hashTable -or hashMap- with some extra methods.
 
 ### 6- Trees: 
