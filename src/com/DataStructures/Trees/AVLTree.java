@@ -17,9 +17,9 @@ public class AVLTree {
         if (root == null)
             root = new TreeNode(value);
         else {
-            if (value > root.data) {
+            if (value > root.val) {
                 root.right = this.add(root.right, value);
-            } else if (value < root.data) {
+            } else if (value < root.val) {
                 root.left = this.add(root.left, value);
             }
             root = makeBalance(root);
@@ -38,9 +38,9 @@ public class AVLTree {
     private TreeNode remove(TreeNode root, int x) {
         if(root==null)
             return null;
-        if(x>root.data)
+        if(x>root.val)
             root.right = remove(root.right,x);
-        else if(x<root.data)
+        else if(x<root.val)
             root.left = remove(root.left,x);
         else{
             if(root.right==null)
@@ -48,8 +48,8 @@ public class AVLTree {
             else if(root.left==null)
                 return root.right;
             else{
-                root.data=maxValue(root.left);
-                root.left=remove(root.left,root.data);
+                root.val =maxValue(root.left);
+                root.left=remove(root.left,root.val);
             }
         }
         root = makeBalance(root);
@@ -144,7 +144,7 @@ public class AVLTree {
                 break;
             root = root.right;
         }
-        return root.data;
+        return root.val;
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -157,10 +157,10 @@ public class AVLTree {
     private boolean contains(TreeNode root, int value) {
         if (root == null) {
             return false;
-        } else if (root.data == value) {
+        } else if (root.val == value) {
             return true;
         } else {
-            return value > root.data ? this.contains(root.right, value) : this.contains(root.left, value);
+            return value > root.val ? this.contains(root.right, value) : this.contains(root.left, value);
         }
     }
 
@@ -175,7 +175,7 @@ public class AVLTree {
     }
     public void preOrder(TreeNode root) {
         if (root != null) {
-            System.out.println(root.data);
+            System.out.println(root.val);
             this.preOrder(root.left);
             this.preOrder(root.right);
         }
@@ -188,7 +188,7 @@ public class AVLTree {
     public void inOrder(TreeNode root) {
         if (root != null) {
             this.inOrder(root.left);
-            System.out.println(root.data);
+            System.out.println(root.val);
             this.inOrder(root.right);
         }
     }
@@ -201,7 +201,7 @@ public class AVLTree {
         if (root != null) {
             this.postOrder(root.left);
             this.postOrder(root.right);
-            System.out.println(root.data);
+            System.out.println(root.val);
         }
     }
 
@@ -214,7 +214,7 @@ public class AVLTree {
 
         while(!q.isEmpty()) {
             TreeNode f = (TreeNode)q.poll();
-            System.out.print(f.data + " ");
+            System.out.print(f.val + " ");
             if (f.left != null) {
                 q.add(f.left);
             }

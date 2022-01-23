@@ -25,10 +25,10 @@ public class BST {
             root = new TreeNode(value);
             return root;
         }
-        if (value > root.data)
+        if (value > root.val)
             root.right = add(root.right, value);
 
-        else if (value < root.data)
+        else if (value < root.val)
             root.left = add(root.left, value);
 
         return root;
@@ -41,9 +41,9 @@ public class BST {
     private TreeNode remove(TreeNode root, int x) {
         if(root==null)
             return null;
-        if(x>root.data)
+        if(x>root.val)
             root.right = remove(root.right,x);
-        else if(x<root.data)
+        else if(x<root.val)
             root.left = remove(root.left,x);
         else{
             if(root.right==null)
@@ -51,8 +51,8 @@ public class BST {
             else if(root.left==null)
                 return root.right;
             else{
-                root.data=maxValue(root.left);
-                root.left=remove(root.left,root.data);
+                root.val =maxValue(root.left);
+                root.left=remove(root.left,root.val);
             }
         }
         return root;
@@ -63,7 +63,7 @@ public class BST {
                 break;
             root = root.right;
         }
-        return root.data;
+        return root.val;
     }
 
 
@@ -73,7 +73,7 @@ public class BST {
     public void preOrder(TreeNode root) {
         if (root == null)
             return;
-        System.out.println(root.data);
+        System.out.println(root.val);
         preOrder(root.left);
         preOrder(root.right);
         return;
@@ -88,7 +88,7 @@ public class BST {
             return;
 
         inOrder(root.left);
-        System.out.println(root.data);
+        System.out.println(root.val);
         inOrder(root.right);
         return;
     }
@@ -103,7 +103,7 @@ public class BST {
 
         postOrder(root.left);
         postOrder(root.right);
-        System.out.println(root.data);
+        System.out.println(root.val);
         return;
     }
 
@@ -116,7 +116,7 @@ public class BST {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode f = q.poll();
-            System.out.print(f.data + " ");
+            System.out.print(f.val + " ");
             if (f.left != null)
                 q.add(f.left);
             if (f.right != null)
@@ -132,9 +132,9 @@ public class BST {
     private boolean contains(TreeNode root, int value) {
         if (root == null)
             return false;
-        if (root.data == value)
+        if (root.val == value)
             return true;
-        else if (value > root.data)
+        else if (value > root.val)
             return contains(root.right, value);
         else
             return contains(root.left, value);
@@ -163,7 +163,7 @@ public class BST {
         }
         TreeNode curr = root;
         while (true) {
-            if (value > curr.data) {
+            if (value > curr.val) {
                 if (curr.right == null) {
                     curr.right = new TreeNode(value);
                     break;
@@ -187,14 +187,14 @@ public class BST {
         TreeNode pre = root;
         TreeNode curr = root;
         while (true) {
-            if (curr.data.equals(x))
+            if (curr.val.equals(x))
                 break;
-            if (curr.data > x) {
+            if (curr.val > x) {
                 pre = curr;
                 curr = curr.left;
                 left = true;
             }
-            if (curr.data < x) {
+            if (curr.val < x) {
                 pre = curr;
                 curr = curr.right;
                 left = false;
@@ -211,21 +211,21 @@ public class BST {
                 pre.right = curr.right;
 
             else {
-                int temp = maxLeft(curr.right).data;
+                int temp = maxLeft(curr.right).val;
                 remove2(temp);
-                curr.data = temp;
+                curr.val = temp;
             }
         } else {
             if (curr.left == curr.right && curr.left == null)
                 root = null;
             else if (curr.left != null) {
-                int temp = maxRight(curr.left).data;
+                int temp = maxRight(curr.left).val;
                 remove2(temp);
-                curr.data = temp;
+                curr.val = temp;
             } else if (curr.right != null) {
-                int temp = maxLeft(curr.right).data;
+                int temp = maxLeft(curr.right).val;
                 remove2(temp);
-                curr.data = temp;
+                curr.val = temp;
             }
         }
         return true;

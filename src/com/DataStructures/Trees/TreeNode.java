@@ -1,11 +1,11 @@
 package com.DataStructures.Trees;
 
 public class TreeNode {
-    Integer data;
+    Integer val;
     TreeNode left;
     TreeNode right;
 
-    public TreeNode(Integer data) {
-        this.data = data;
+    public TreeNode(Integer val) {
+        this.val = val;
     }
 }

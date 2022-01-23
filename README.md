@@ -7,13 +7,13 @@
 and its similar (DoublyLinkedList) with some extra methods.
 
 ### 3- Stacks
-(that built in different data structures) with some extra methods.
+(that built in different val structures) with some extra methods.
 
 ### 4- Queues:
 with more than one type (like: circularQueue and deque).
 
 ### 5- Hashing:
-: hashSet and hashTable -or hashMap- with some extra methods.
+hashSet and hashTable -or hashMap- with some extra methods.
 
 ### 6- Trees: 
 Binary search tree (BST) and AVL tree with some beautiful extra methods.
