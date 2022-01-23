@@ -282,6 +282,26 @@ public class treesMethods {
         sum+=root.val;
         return sumNumbers(root.left,sum)+sumNumbers(root.right,sum);
     }
+
+
+    ////https://leetcode.com/problems/validate-binary-search-tree/
+
+    public boolean isValidBST(TreeNode root) {
+        int min = Integer.MIN_VALUE;
+        int max = Integer.MAX_VALUE;
+
+        return isValid(root, min, max);
+    }
+
+    public static boolean isValid(TreeNode root, int min, int max) {
+        if(root == null)
+            return true;
+
+        if(root.val <= min || root.val >= max)
+            return false;
+
+        return isValid(root.left,  min, root.val) && isValid(root.right, root.val, max);
+    }
 }
 
 
