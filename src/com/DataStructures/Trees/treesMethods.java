@@ -116,26 +116,25 @@ public class treesMethods {
     ////https://leetcode.com/problems/subtree-of-another-tree/
 
     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
-        while(!q.isEmpty()){
-            TreeNode temp = q.poll();
-            if(temp.val ==subRoot.val)
-                if(equals(temp,subRoot))
-                    return true;
-            if(temp.left!=null)
-                q.add(temp.left);
-            if(temp.right!=null)
-                q.add(temp.right);
-        }
-        return false;
-    }
-    public boolean equals(TreeNode root,TreeNode subRoot){
-        if(root==subRoot && root==null)
+        if (root == null)
+            return false;
+
+        if (isSame(root, subRoot))
             return true;
-        if(root!=null && subRoot!=null &&root.val ==subRoot.val)
-            return equals(root.left,subRoot.left)&&equals(root.right,subRoot.right);
-        return false;
+
+        return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+    }
+    private boolean isSame(TreeNode root, TreeNode subRoot) {
+        if (root == null && subRoot == null)
+            return true;
+
+        if (root == null || subRoot == null)
+            return false;
+
+        if (root.val != subRoot.val)
+            return false;
+
+        return isSame(root.left, subRoot.left) && isSame(root.right, subRoot.right);
     }
 
 
