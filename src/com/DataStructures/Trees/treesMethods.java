@@ -221,23 +221,23 @@ public class treesMethods {
 
     ////https://leetcode.com/problems/balanced-binary-tree/
 
-    public static boolean isBalanced(TreeNode root){
+    public boolean isBalanced(TreeNode root) {
         if(root==null)
             return true;
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
-        while(!q.isEmpty()) {
-            TreeNode temp = q.poll();
-            if (Math.abs(maxDepth(temp.left) - maxDepth(temp.right)) > 1)
-                return false;
-            if(temp.left!=null)
-                q.add(temp.left);
-            if(temp.right!=null)
-                q.add(temp.right);
-        }
-        return true;
-    }
 
+        int L=maxDepth(root.left);
+        int R=maxDepth(root.right);
+
+        if(Math.abs(L-R)>1)
+            return false;
+
+        return isBalanced(root.left) && isBalanced(root.right);
+    }
+    /*private static int maxDepth(TreeNode root) {
+            if(root==null)
+                return 0;
+            return 1+Math.max(maxDepth(root.left),maxDepth(root.right));
+      }*/
 
     ////https://leetcode.com/problems/increasing-order-search-tree/
 
