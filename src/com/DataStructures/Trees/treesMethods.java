@@ -261,6 +261,28 @@ public class treesMethods {
             temp = temp.right;
         temp.right=right;
     }
+
+
+    ////https://leetcode.com/problems/sum-root-to-leaf-numbers/
+
+    public int sumNumbers(TreeNode root) {
+        if(root==null)
+            return 0;
+        return sumNumbers(root,0);
+
+    }
+    private int sumNumbers(TreeNode root , int sum) {
+        if(root==null)
+            return 0;
+        if(root.left == root.right && root.left==null){
+            sum*=10;
+            sum+=root.val;
+            return sum;
+        }
+        sum*=10;
+        sum+=root.val;
+        return sumNumbers(root.left,sum)+sumNumbers(root.right,sum);
+    }
 }
 
 
