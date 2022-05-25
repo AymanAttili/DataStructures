@@ -18,9 +18,9 @@ public class AVLTree {
             root = new TreeNode(value);
         else {
             if (value > root.val) {
-                root.right = this.add(root.right, value);
+                root.right = add(root.right, value);
             } else if (value < root.val) {
-                root.left = this.add(root.left, value);
+                root.left = add(root.left, value);
             }
             root = makeBalance(root);
         }
