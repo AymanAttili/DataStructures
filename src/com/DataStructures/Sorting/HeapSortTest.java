@@ -1,4 +1,4 @@
-package com.DataStructures.Non_generic.Sorting;
+package com.DataStructures.Sorting;
 
 public class HeapSortTest {
     ////Average complexity = O(nlog n)./////

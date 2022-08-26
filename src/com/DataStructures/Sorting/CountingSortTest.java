@@ -1,4 +1,4 @@
-package com.DataStructures.Non_generic.Sorting;
+package com.DataStructures.Sorting;
 
 public class CountingSortTest {
     ////Average complexity = O(n+k) {where k is the largest element in array}./////

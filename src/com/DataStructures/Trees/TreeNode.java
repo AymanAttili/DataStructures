@@ -1,4 +1,4 @@
-package com.DataStructures.Non_generic.Trees;
+package com.DataStructures.Trees;
 
 public class TreeNode {
     Integer val;

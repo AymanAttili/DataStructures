@@ -1,24 +1,22 @@
-package com.DataStructures.Non_generic.Sorting;
+package com.DataStructures.Sorting;
 
 import java.util.Arrays;
 
-public class SelectionSortTest {
+public class BubbleSortTest {
     ////Average complexity = O(n^2)./////
     ////Space complexity = O(1)./////
 
-    private static void sort(int arr[]) {
+    private static void sort(int arr[])
+    {
         int n = arr.length;
         for (int i = 0; i < n-1; i++)
-        {
-            int min_idx = i;
-            for (int j = i+1; j < n; j++)
-                if (arr[j] < arr[min_idx])
-                    min_idx = j;
-
-            int temp = arr[min_idx];
-            arr[min_idx] = arr[i];
-            arr[i] = temp;
-        }
+            for (int j = 0; j < n-i-1; j++)
+                if (arr[j] > arr[j+1])
+                {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
     }
 
     public static void main(String[] args) {

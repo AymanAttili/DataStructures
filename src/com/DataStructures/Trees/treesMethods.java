@@ -1,4 +1,4 @@
-package com.DataStructures.Non_generic.Trees;
+package com.DataStructures.Trees;
 
 
 import java.util.*;

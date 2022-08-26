@@ -1,4 +1,4 @@
-package com.DataStructures.Non_generic;
+package com.DataStructures;
 
 import com.DataStructures.Generic.Queues.MyQueue;
 
