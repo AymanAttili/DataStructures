@@ -21,6 +21,6 @@ Binary search tree (BST) and AVL tree with some beautiful extra methods.
 ### 7- Sorting: 
 I wrote most of the sorting algorithms (like: heap, merge, quick, etc...).
 
-## please share this project as much as you can.
+## please share as  you can.
 
 # El-Attili :) .
