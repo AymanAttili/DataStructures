@@ -23,4 +23,4 @@ I wrote most of the sorting algorithms (like: heap, merge, quick, etc...).
 
 ## please share this project as much as you can.
 
-# El-Attili :3.
+# El-Attili :) .
