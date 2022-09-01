@@ -1,11 +1,19 @@
 package com.DataStructures.Generic.ArrayList;
 
-public class MyArrayList<E> extends MyAbstract<E> {
+public class MyArrayList<E>{
     private static final int capacity = 5;
     E[] arr = (E[]) new Object[capacity];
-    int size = super.getSize();
+    int size = getSize();
 
-    @Override
+    public int getSize(){
+        return size;
+    }
+
+    public int setSize(int x){
+        size=x;
+        return 0;
+    }
+
     public void add(E e) {
         if(getSize()==arr.length)
             ensureCapacity();
@@ -13,7 +21,6 @@ public class MyArrayList<E> extends MyAbstract<E> {
         setSize(getSize()+1);
     }
 
-    @Override
     public void add(int index, E e) {
         if(index<0 || index>getSize())
             throw new ArrayIndexOutOfBoundsException("Index : " + index);
@@ -31,7 +38,6 @@ public class MyArrayList<E> extends MyAbstract<E> {
 
     }
 
-    @Override
     public void clear() {
         setSize(0);
     }
@@ -48,7 +54,6 @@ public class MyArrayList<E> extends MyAbstract<E> {
         return false;
     }
 
-    @Override
     public E get(int index) {
         if(index<0 || index>getSize())
             throw new ArrayIndexOutOfBoundsException("Index : " + index);
@@ -57,7 +62,6 @@ public class MyArrayList<E> extends MyAbstract<E> {
 
     }
 
-    @Override
     public int indexOf(E e) {
         for(int i=0 ; i<getSize() ; i++)
             if(arr[i]==e)
@@ -65,7 +69,6 @@ public class MyArrayList<E> extends MyAbstract<E> {
         return -1;
     }
 
-    @Override
     public int lastIndexOf(E e) {
         for(int i=getSize()-1 ; i>=0 ; i--)
             if(arr[i]==e)
@@ -73,7 +76,6 @@ public class MyArrayList<E> extends MyAbstract<E> {
         return -1;
     }
 
-    @Override
     public E remove(int index) {
         if(index<0 || index>getSize())
             throw new ArrayIndexOutOfBoundsException("Index : " + index);
@@ -86,7 +88,6 @@ public class MyArrayList<E> extends MyAbstract<E> {
         }
     }
 
-    @Override
     public E[] removeRange(int fromInd, int toInd) {
         E[] e = (E[]) new Object[toInd-fromInd];
         int ind=0;
@@ -95,14 +96,12 @@ public class MyArrayList<E> extends MyAbstract<E> {
         return e;
     }
 
-    @Override
     public void set(int index, E e) {
         if(index<0 || index>getSize())
             throw new ArrayIndexOutOfBoundsException("Index : " + index);
         arr[index]=e;
     }
 
-    @Override
     public E[] subList(int fromInd, int toInd) {
         E[] e = (E[]) new Object[toInd-fromInd];
         int ind=0;
@@ -111,12 +110,10 @@ public class MyArrayList<E> extends MyAbstract<E> {
         return e;
     }
 
-    @Override
     public boolean contains(E e) {
         return indexOf(e)>=0;
     }
 
-    @Override
     public E[] toArray() {
         E[] temp = (E[]) new Object[getSize()];
         for(int i=0 ; i<getSize() ; i++){

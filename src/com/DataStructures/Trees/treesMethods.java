@@ -51,6 +51,52 @@ public class treesMethods {
     }
 
 
+    //// to find the k-th largest element in BST.
+
+    int ind=0,x;
+    public boolean kthElement(TreeNode root,int k){
+        if(root == null)
+            return false;
+
+        if(root.right == null)
+        {
+            ind++;
+            if(ind==k)
+            {
+                x=root.val;
+                return false;
+            }
+            return kthElement(root.left,k);
+        }
+        if(kthElement(root.right,k)==false) {
+            ind++;
+            if (ind == k) {
+                x = root.val;
+                return false;
+            }
+            return kthElement(root.left, k);
+        }
+        return true;
+    }
+
+
+    ///OR:
+    int y;
+    public int kth(TreeNode root,int k){
+        if(root==null)
+            return Integer.MIN_VALUE;
+
+        int r = kth(root.right,k);
+        if(r==Integer.MIN_VALUE) {
+            y++;
+            if (y == k)
+                return root.val;
+            return kth(root.left,k);
+        }
+
+        return r;
+    }
+
     ////A method that returns the path of a specific element in tree from root to it.
 
     public static String path(TreeNode root, Integer value) {
@@ -302,6 +348,8 @@ public class treesMethods {
 
         return isValid(root.left,  min, root.val) && isValid(root.right, root.val, max);
     }
+
+
 }
 
 

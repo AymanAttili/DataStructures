@@ -257,37 +257,6 @@ public class BST {
         return 1 + numNRec(root.left) + numNRec(root.right);
     }
 
-    int ind=0,x;
-    public int kthElement(int k){
-        kthElement(root,k);
-        return x;
-    }
-    private boolean kthElement(TreeNode root,int k){
-        if(root == null)
-            return false;
-
-        if(root.right == null)
-        {
-            ind++;
-            if(ind==k)
-            {
-                x=root.val;
-                return false;
-            }
-            return kthElement(root.left,k);
-        }
-        if(kthElement(root.right,k)==false) {
-            ind++;
-            if (ind == k) {
-                x = root.val;
-                return false;
-            }
-            return kthElement(root.left, k);
-        }
-        return true;
-    }
-
-
 }
 
 
