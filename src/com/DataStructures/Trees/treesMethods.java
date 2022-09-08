@@ -4,29 +4,6 @@ package com.DataStructures.Trees;
 import java.util.*;
 public class treesMethods {
 
-    ////Another solution for the question above.
-    static ArrayList<TreeNode> arr = new ArrayList<>();
-    public static TreeNode increasingBST2(TreeNode root) {
-        arr.clear();
-        inOrder(root);
-        for (int i = 0; i < arr.size(); i++) {
-            if (i == arr.size() - 1)
-                arr.get(i).right = null;
-            else
-                arr.get(i).right = arr.get(i + 1);
-
-            arr.get(i).left = null;
-        }
-        return arr.get(0);
-    }
-    private static void inOrder(TreeNode root) {//To add the elements of tree ascending.
-        if(root==null)
-            return ;
-        inOrder(root.left);
-        arr.add(root);
-        inOrder(root.right);
-    }
-
 
     ////To find the maximum depth for a specific node.
 
@@ -306,6 +283,31 @@ public class treesMethods {
             temp = temp.right;
         temp.right=right;
     }
+
+    ////Another solution for the question above.
+    static ArrayList<TreeNode> arr = new ArrayList<>();
+    public static TreeNode increasingBST2(TreeNode root) {
+        arr.clear();
+        inOrder(root);
+        for (int i = 0; i < arr.size(); i++) {
+            if (i == arr.size() - 1)
+                arr.get(i).right = null;
+            else
+                arr.get(i).right = arr.get(i + 1);
+
+            arr.get(i).left = null;
+        }
+        return arr.get(0);
+    }
+    private static void inOrder(TreeNode root) {//To add the elements of tree ascending.
+        if(root==null)
+            return ;
+        inOrder(root.left);
+        arr.add(root);
+        inOrder(root.right);
+    }
+
+
 
 
     ////https://leetcode.com/problems/sum-root-to-leaf-numbers/
