@@ -1,21 +1,31 @@
-package com.DataStructures.Trees;
+package com.DataStructures.Trees.AVL;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
+class AVLNode{
+    Integer val;
+    AVLNode left;
+    AVLNode right;
+
+    public AVLNode(Integer val) {
+        this.val = val;
+    }
+}
+
 public class AVLTree {
-    TreeNode root = null;
+    AVLNode root = null;
 
     public AVLTree() {
     }
 
-    public TreeNode add(Integer value) {
+    public AVLNode add(Integer value) {
         this.root = this.add(this.root, value);
         return this.root;
     }
-    private TreeNode add(TreeNode root, Integer value) {
+    private AVLNode add(AVLNode root, Integer value) {
         if (root == null)
-            root = new TreeNode(value);
+            root = new AVLNode(value);
         else {
             if (value > root.val) {
                 root.right = add(root.right, value);
@@ -35,7 +45,7 @@ public class AVLTree {
         root=remove(root,x);
         return true;
     }
-    private TreeNode remove(TreeNode root, int x) {
+    private AVLNode remove(AVLNode root, int x) {
         if(root==null)
             return null;
         if(x>root.val)
@@ -60,28 +70,28 @@ public class AVLTree {
     ///////////////////////////////////////////////////////////////////////////////////////////////
     ////Helper Methods:////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////
-    private TreeNode lRotation(TreeNode root) {//Left rotation method (helper method).
-        TreeNode temp = root.right;
+    private AVLNode lRotation(AVLNode root) {//Left rotation method (helper method).
+        AVLNode temp = root.right;
         root.right=temp.left;
         temp.left =root;
         return temp;
     }
 
 
-    private TreeNode rRotation(TreeNode root) {//Right rotation method (helper method).
-        TreeNode temp = root.left;
+    private AVLNode rRotation(AVLNode root) {//Right rotation method (helper method).
+        AVLNode temp = root.left;
         root.left=temp.right;
         temp.right =root;
         return temp;
     }
 
 
-    private int balanceFactor(TreeNode root){//Calculates the balance factor for the given node.
+    private int balanceFactor(AVLNode root){//Calculates the balance factor for the given node.
         return maxDepth(root.left)-maxDepth(root.right);
     }
 
 
-    private TreeNode makeBalance(TreeNode root){//A method to make sure that the tree is balanced.
+    private AVLNode makeBalance(AVLNode root){//A method to make sure that the tree is balanced.
 
         // Finding the balance factor for the root.
         int BF = balanceFactor(root);
@@ -112,7 +122,7 @@ public class AVLTree {
     }
 
 
-    private TreeNode maxRight(TreeNode root) {//To find the maximum right node in the given subtree.
+    private AVLNode maxRight(AVLNode root) {//To find the maximum right node in the given subtree.
         while(root.right != null) {
             root = root.right;
         }
@@ -120,7 +130,7 @@ public class AVLTree {
     }
 
 
-    private TreeNode maxLeft(TreeNode root) {//To find the maximum left node in the given subtree.
+    private AVLNode maxLeft(AVLNode root) {//To find the maximum left node in the given subtree.
         while(root.left != null) {
             root = root.left;
         }
@@ -131,14 +141,14 @@ public class AVLTree {
     public int maxDepth() {
         return this.maxDepth(this.root);
     }
-    private int maxDepth(TreeNode root) {
+    private int maxDepth(AVLNode root) {
         if(root==null)
             return 0;
         return 1+ Math.max(maxDepth(root.right),maxDepth(root.left));
     }
 
 
-    private Integer maxValue(TreeNode root) {//To find the maximum value of a given subtree.
+    private Integer maxValue(AVLNode root) {//To find the maximum value of a given subtree.
         while (true) {
             if (root.right == null)
                 break;
@@ -154,7 +164,7 @@ public class AVLTree {
     public boolean contains(int value) {
         return this.contains(this.root, value);
     }
-    private boolean contains(TreeNode root, int value) {
+    private boolean contains(AVLNode root, int value) {
         if (root == null) {
             return false;
         } else if (root.val == value) {
@@ -173,7 +183,7 @@ public class AVLTree {
     public void preOrder() {//prints the tree pre-order traversal.
         this.preOrder(this.root);
     }
-    public void preOrder(TreeNode root) {
+    public void preOrder(AVLNode root) {
         if (root != null) {
             System.out.println(root.val);
             this.preOrder(root.left);
@@ -185,7 +195,7 @@ public class AVLTree {
     public void inOrder() {//prints the tree in-order traversal.
         this.inOrder(this.root);
     }
-    public void inOrder(TreeNode root) {
+    public void inOrder(AVLNode root) {
         if (root != null) {
             this.inOrder(root.left);
             System.out.println(root.val);
@@ -197,7 +207,7 @@ public class AVLTree {
     public void postOrder() {//prints the tree post-order traversal.
         this.postOrder(this.root);
     }
-    public void postOrder(TreeNode root) {
+    public void postOrder(AVLNode root) {
         if (root != null) {
             this.postOrder(root.left);
             this.postOrder(root.right);
@@ -208,12 +218,12 @@ public class AVLTree {
     public void BFS() {
         this.BFS(this.root);
     }
-    public void BFS(TreeNode root) {
-        Queue<TreeNode> q = new LinkedList();
+    public void BFS(AVLNode root) {
+        Queue<AVLNode> q = new LinkedList();
         q.add(root);
 
         while(!q.isEmpty()) {
-            TreeNode f = (TreeNode)q.poll();
+            AVLNode f = (AVLNode)q.poll();
             System.out.print(f.val + " ");
             if (f.left != null) {
                 q.add(f.left);
