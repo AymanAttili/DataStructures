@@ -102,12 +102,8 @@ public class MyLinkedList<T> {
         if(head==null)
             head=tail=temp;
         else{
-            Node<T> curr = head;
-            while(curr.getNext()!=null) {
-                curr = curr.getNext();
-            }
-            curr.setNext(new Node<T>(data));
-            tail = curr.getNext();
+            tail.setNext(temp);
+            tail=temp;
         }
     }
 
