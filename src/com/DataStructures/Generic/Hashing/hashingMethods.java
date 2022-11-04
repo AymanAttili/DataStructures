@@ -133,15 +133,14 @@ public class hashingMethods {
     public static int numOfJewels(String[] stones, String[] jewels) {
         HashSet<String> set = new HashSet<>();
         int count = 0;
-        for (int i = 0; i < jewels.length; i++) {
+        for(int i=0 ; i<jewels.length ; i++){
             set.add(jewels[i]);
         }
         for (int i = 0; i < stones.length; i++) {
-            if (set.contains(stones[i]))
+            if(set.contains(stones[i]))
                 count++;
         }
         return count;
-
     }
 
 
