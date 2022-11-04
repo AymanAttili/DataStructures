@@ -102,8 +102,7 @@ public class MyLinkedList<T> {
         if(head==null)
             head=tail=temp;
         else{
-            tail.setNext(temp);
-//            tail=temp;
+            tail.setNext(temp);tail=temp;
         }
     }
 
