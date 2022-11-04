@@ -103,7 +103,7 @@ public class MyLinkedList<T> {
             head=tail=temp;
         else{
             tail.setNext(temp);
-            tail=temp;
+//            tail=temp;
         }
     }
 
