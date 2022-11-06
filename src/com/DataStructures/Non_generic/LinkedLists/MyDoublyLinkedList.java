@@ -88,7 +88,9 @@ public class MyDoublyLinkedList<T> {
                 ind--;
             }
             temp.setNext(curr.getNext());
+            temp.getNext().setPrevious(temp);
             curr.setNext(temp);
+            temp.setPrevious(curr);
         }
     }
 
