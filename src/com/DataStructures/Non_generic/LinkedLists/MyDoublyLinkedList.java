@@ -83,9 +83,10 @@ public class MyDoublyLinkedList<T> {
         else {
             DoublyNode temp = new DoublyNode(data);
             DoublyNode curr = head;
-            while (ind > 2) {
+            int i=1;
+            while (i<ind-1) {
                 curr = curr.getNext();
-                ind--;
+                i++;
             }
             temp.setNext(curr.getNext());
             temp.getNext().setPrevious(temp);
