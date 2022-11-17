@@ -41,7 +41,8 @@ public class MyDoublyLinkedList<T> {
             throw new NullPointerException("Out of link bounds");
 
         DoublyNode curr = head;
-        while(ind>1){
+        int i=1;
+        while(i<ind){
             curr = curr.getNext();
             ind--;
         }
@@ -55,9 +56,10 @@ public class MyDoublyLinkedList<T> {
             throw new NullPointerException("Out of link bounds");
 
         DoublyNode curr = head;
-        while(ind>1){
+        int i=1;
+        while(i<ind){
             curr = curr.getNext();
-            ind--;
+            i++;
         }
         curr.setData(data);
     }

@@ -47,9 +47,10 @@ public class MyLinkedList {
             throw new NullPointerException("Out of link bounds");
 
         Node curr = head;
-        while(ind>1){
+        int i=1;
+        while(i<ind){
             curr = curr.getNext();
-            ind--;
+            i++;
         }
         return curr.getData();
     }
@@ -61,9 +62,10 @@ public class MyLinkedList {
             throw new NullPointerException("Out of link bounds");
 
         Node curr = head;
-        while(ind>1){
+        int i=1;
+        while(i<ind){
             curr = curr.getNext();
-            ind--;
+            i++;
         }
         curr.setData(data);
     }
@@ -88,9 +90,10 @@ public class MyLinkedList {
         else {
             Node temp = new Node(data);
             Node curr = head;
-            while (ind > 2) {
+            int i=1;
+            while(i<ind-1){
                 curr = curr.getNext();
-                ind--;
+                i++;
             }
             temp.setNext(curr.getNext());
             curr.setNext(temp);

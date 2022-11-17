@@ -64,7 +64,7 @@ public class MyLinkedList<T> {
 
         Node curr = head;
         int i=1;
-        while (i<=ind) {
+        while (i<ind) {
             curr = curr.getNext();
             i++;
         }
@@ -92,7 +92,7 @@ public class MyLinkedList<T> {
             Node temp = new Node(data);
             Node curr = head;
             int i=1;
-            while (i<=ind-1) {
+            while (i<ind-1) {
                 curr = curr.getNext();
                 i++;
             }
